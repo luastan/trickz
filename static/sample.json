@@ -1,0 +1,76 @@
+{
+  "docs": [
+    {
+      "slug": "index",
+      "title": "Trickz",
+      "path": "/index",
+      "extension": ".md"
+    },
+    {
+      "slug": "hello",
+      "title": "Nuxt Content + TailwindCSS Typography",
+      "path": "/hello",
+      "extension": ".md"
+    },
+    {
+      "slug": "web",
+      "title": "Web Pentesting",
+      "path": "/web",
+      "extension": ".md"
+    },
+    {
+      "slug": "whatever",
+      "title": "Nuxt Content + TailwindCSS Typography",
+      "path": "/whatever",
+      "extension": ".md"
+    },
+    {
+      "slug": "index",
+      "title": "Mobile Pentesting",
+      "path": "/mobile/index",
+      "extension": ".md"
+    },
+    {
+      "slug": "index",
+      "title": "Pentesting",
+      "path": "/pentesting/index",
+      "extension": ".md"
+    },
+    {
+      "slug": "client-side",
+      "title": "Client-Side Atacks",
+      "path": "/web/client-side",
+      "extension": ".md"
+    },
+    {
+      "slug": "other",
+      "title": "Advanced topics",
+      "path": "/web/other",
+      "extension": ".md"
+    },
+    {
+      "slug": "server-side",
+      "title": "Server-Side Attacks",
+      "path": "/web/server-side",
+      "extension": ".md"
+    },
+    {
+      "slug": "oauth",
+      "title": "Oauth",
+      "path": "/web/other/oauth",
+      "extension": ".md"
+    },
+    {
+      "slug": "xss",
+      "title": "XSS",
+      "path": "/web/client-side/xss",
+      "extension": ".md"
+    },
+    {
+      "slug": "ssti",
+      "title": "Server-Side Template injection",
+      "path": "/web/server-side/ssti",
+      "extension": ".md"
+    }
+  ]
+}

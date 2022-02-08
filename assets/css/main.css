@@ -1,0 +1,97 @@
+.dark-mode .light-img {
+  display: none;
+}
+
+.dark-mode .dark-img {
+  display: block;
+}
+
+.dark-img {
+  display: none;
+}
+
+.light-img {
+  display: block;
+}
+
+html {
+  /*font-size: 16px;*/
+}
+
+
+.nuxt-content {
+  @apply break-words;
+}
+
+.nuxt-content h1::before,
+.nuxt-content h2::before,
+.nuxt-content h3::before,
+.nuxt-content h4::before {
+  /* Fix anchor scrollTo */
+  display: block;
+  content: " ";
+  margin-top: -85px;
+  height: 85px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.nuxt-content h1 a::before,
+.nuxt-content h3 a::before,
+.nuxt-content h2 a::before {
+  content: "#";
+  @apply transition-opacity text-primary-500 font-normal text-xl leading-8 -ml-5 pr-2 absolute opacity-100;
+}
+
+@screen lg {
+  .nuxt-content h1 a::before,
+  .nuxt-content h3 a::before,
+  .nuxt-content h2 a::before {
+    @apply opacity-0
+  }
+
+  .nuxt-content h1:hover a::before,
+  .nuxt-content h3:hover a::before,
+  .nuxt-content h2:hover a::before {
+    @apply opacity-100
+  }
+}
+
+
+/* Fancy classess */
+
+
+.fancy-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: .25rem;
+  @apply bg-gray-200 dark:bg-gray-800 transition-colors
+}
+.fancy-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-300 dark:bg-gray-700
+}
+
+
+
+.fancy-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-600
+}
+
+html {
+  @apply fancy-scrollbar
+}
+
+
+
+/* Code enhancements */
+.copy-me {
+  @apply cursor-pointer rounded p-1
+}
+
+.copy-me:hover {
+  @apply bg-gray-200 dark:bg-gray-800
+}
+
