@@ -1,10 +1,29 @@
 steps:
 
+  # Access the id_github file from Secret Manager, and setup SSH
+  - name: 'gcr.io/cloud-builders/git'
+    secretEnv: ['SSH_KEY']
+    entrypoint: 'bash'
+    args:
+    - -c
+    - |
+      echo "$$SSH_KEY" > /root/.ssh/id_rsa
+      chmod 400 /root/.ssh/id_rsa
+      cp known_hosts.github /root/.ssh/known_hosts
+      rm -rf content
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
 
-  # Dependency install
-  - name: 'gcr.io/cloud-builders/yarn:node-10.10.0'
-    args: [ 'install', '--ignore-engines' ]
-
+  # Update clone the content
+  - name: 'gcr.io/cloud-builders/git'
+    args:
+    - clone
+    - git@github.com:luastan/tricks-content.git
+    - content
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
 
   # Container image build
   - name: 'gcr.io/cloud-builders/docker'
@@ -28,3 +47,8 @@ timeout: 3000s
 
 images:
   - gcr.io/$PROJECT_ID/ssr-tricks
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/$PROJECT_ID/secrets/id-github/versions/latest
+      env: 'SSH_KEY'
