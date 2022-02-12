@@ -28,7 +28,7 @@ steps:
     # Copy the images to the static directory
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: 'bash'
-  args:
+    args:
     - -c
     - |
       find content -regex '.*\(jpg\|jpeg\|png\|jfif\|gif\)' \! -path './static/*' -exec cp -t static {} +
