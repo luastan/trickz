@@ -91,9 +91,10 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
+    liveEdit: false,
     markdown: {
       prism: {
-        theme: 'prism-themes/themes/prism-one-light.css'
+        theme: '~/assets/css/code-snippets-theme.css'
       }
     }
   },

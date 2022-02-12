@@ -119,8 +119,8 @@ export default {
           }
         }
         const component = new CopyButton().$mount();
-        block.querySelector("pre").appendChild(component.$el)
-        block.querySelector("pre").classList.add('relative');
+        block.appendChild(component.$el);
+        block.classList.add('relative');
         // const smartinput = new SmartInput({});
       }
 
