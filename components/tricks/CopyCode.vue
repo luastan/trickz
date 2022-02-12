@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     handleCopy() {
-      navigator.clipboard.writeText(this.$refs.copyRoot.parentElement.innerText.slice(0, -1));
+      navigator.clipboard.writeText(this.$refs.copyRoot.parentElement.querySelector("pre > code").innerText.slice(0, -1));
       this.copied = true;
       const vm = this;
       setTimeout(function () {
