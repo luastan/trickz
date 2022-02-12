@@ -31,7 +31,7 @@ steps:
     args:
     - -c
     - |
-      find content -regex '.*\(jpg\|jpeg\|png\|jfif\|gif\)' \! -path './static/*' -exec cp -t static {} +
+      find content -regex '.*\(jpg\|jpeg\|png\|jfif\|gif\|svg\)' \! -path './static/*' -exec cp -t static {} +
     volumes:
     - name: 'ssh'
       path: /root/.ssh
