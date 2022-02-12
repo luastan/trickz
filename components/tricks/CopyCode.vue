@@ -4,8 +4,8 @@
     @click.prevent="handleCopy"
     ref="copyRoot"
   >
-    <icons-copy-check v-if="copied" />
-    <icons-copy class="fill-gray-600 dark:fill-gray-400" v-else />
+    <icons-copy-check v-if="copied"/>
+    <icons-copy class="fill-gray-600 dark:fill-gray-400" v-else/>
   </div>
 </template>
 
@@ -33,12 +33,24 @@ export default {
 </script>
 
 <style scoped>
+*:hover > .tricks-copy-code {
+  opacity: 100;
+}
+
+
+@screen sm {
   .tricks-copy-code {
-    transition-property: box-shadow, transform;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+    opacity: 0;
   }
-  .tricks-copy-code > .tricks-icon {
-    @apply stroke-gray-600 h-5 w-5
-  }
+}
+
+.tricks-copy-code {
+  transition-property: box-shadow, transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.tricks-copy-code > .tricks-icon {
+  @apply stroke-gray-600 h-5 w-5
+}
 </style>
