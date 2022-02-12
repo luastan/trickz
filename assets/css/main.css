@@ -55,9 +55,15 @@ html {
 
   .nuxt-content h1 a::before,
   .nuxt-content h3 a::before,
+
   .nuxt-content h2 a::before {
     content: "#";
     @apply text-primary-500 font-normal text-xl leading-8 -ml-5 pr-2 absolute opacity-100 transition-opacity
+  }
+
+  .nuxt-content h4 a::before {
+    content: "#";
+    @apply text-primary-500 font-normal text-lg leading-6 -ml-5 pr-2 absolute opacity-100 transition-opacity
   }
 }
 
@@ -65,12 +71,14 @@ html {
 @screen md {
   .nuxt-content h1 a::before,
   .nuxt-content h3 a::before,
+  .nuxt-content h4 a::before,
   .nuxt-content h2 a::before {
     @apply opacity-0
   }
 
   .nuxt-content h1:hover a::before,
   .nuxt-content h3:hover a::before,
+  .nuxt-content h4:hover a::before,
   .nuxt-content h2:hover a::before {
     @apply opacity-100
   }
