@@ -18,7 +18,7 @@
             v-model="q"
             class="block w-full pl-10 pr-3 py-2 truncate leading-5 placeholder-gray-500 border border-transparent text-gray-700 dark:text-white dark-focus:text-white focus:border-gray-300 dark-focus:border-gray-700 rounded-md focus:outline-none focus:bg-white dark-focus:bg-gray-900 bg-gray-200 dark:bg-gray-800"
             :class="{ 'rounded-b-none': focus && (searching || results.length) }"
-            placeholder="Click or press / to search"
+            placeholder="Search (Ctrl + /)"
             type="search"
             autocomplete="off"
             @focus="onFocus"
@@ -107,7 +107,7 @@ export default {
       this.$emit('focus', false)
     },
     keyup(e) {
-      if (e.key === '/') {
+      if (e.key === '/' && e.ctrlKey) {
         this.$refs.search.focus()
       }
     },
