@@ -2,7 +2,7 @@
   <div v-if="toc.length" class="w-full lg:w-1/4 block relative">
     <div class="lg:sticky lg:top-16 overflow-y-auto h-full fancy-scrollbar lg:h-auto lg:max-h-(screen-16)">
       <nav
-        class="py-4 lg:py-8 lg:pl-8 lg:pr-2'"
+        class="py-4 lg:py-8 lg:pl-8 lg:pr-4"
       >
         <p
           class="mb-3 lg:mb-2 text-gray-500 dark:text-gray-600 uppercase tracking-wider font-bold text-sm lg:text-xs"
