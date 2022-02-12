@@ -69,6 +69,10 @@ html {
   }
 }
 
+.nuxt-content p > img {
+  @apply mx-auto
+}
+
 
 /* Fancy classess */
 
