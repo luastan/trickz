@@ -5,7 +5,7 @@ export default {
     // }
     const docs = (await this.$content('/', {deep: true})
       .only(['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'path'])
-      .sortBy('position', 'asc')
+      .sortBy('path', 'asc')
       .fetch())
       .map(doc => ({...doc, path: `${doc.path}`}));
 
