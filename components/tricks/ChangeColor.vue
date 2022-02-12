@@ -1,8 +1,8 @@
 <template>
   <button
-    class="tricks-change-color"
+    class="tricks-change-color outline-0 appearance-none"
     type="button"
-    @click="mode = mode === 'light' ? 'dark' : 'light'"
+    @click="mode = mode !== 'dark' ? 'dark' : 'light'"
   >
     <icons-moon v-if="mode === 'dark'"/>
     <icons-sun v-else/>
