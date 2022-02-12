@@ -1,6 +1,6 @@
 <template>
   <div v-if="toc.length" class="w-full lg:w-1/4 block relative">
-    <div class="lg:sticky lg:top-16 overflow-y-auto h-full lg:h-auto lg:max-h-(screen-16)">
+    <div class="lg:sticky lg:top-16 overflow-y-auto h-full fancy-scrollbar lg:h-auto lg:max-h-(screen-16)">
       <nav
         class="py-4 lg:py-8 lg:pl-8 lg:pr-2'"
       >
@@ -20,7 +20,7 @@
           >
             <a
               :href="`#${link.id}`"
-              class="block text-sm scrollactive-item transition-padding ease-in-out duration-300 hover:pl-1"
+              class="block text-sm transition-padding ease-in-out duration-300 hover:pl-1"
               :class="{
                 'py-2': link.depth === 2,
                 'ml-2 pb-2': link.depth === 3,
