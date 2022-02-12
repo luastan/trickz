@@ -28,7 +28,7 @@
       </div>
       <ul
         v-show="focus && (searching || results.length)"
-        class="z-10 absolute w-full flex-1 top-0 bg-white dark:bg-gray-900 rounded-md border border-gray-300 dark:border-gray-700 overflow-hidden"
+        class="z-10 absolute w-full flex-1 top-0 bg-white dark:bg-gray-800 dark:text-gray-200 rounded-md border border-gray-300 dark:border-gray-700 overflow-hidden"
         :class="{ 'rounded-t-none': focus && (searching || results.length) }"
         style="margin-top: 37px;"
       >
@@ -43,7 +43,7 @@
             :to="result.path"
             class="flex px-4 py-2 items-center leading-5 transition ease-in-out duration-150"
             :class="{
-            'text-primary-500 bg-gray-100 dark:bg-gray-800': focusIndex === index
+            'text-primary-400 bg-gray-100 dark:bg-gray-700': focusIndex === index
           }"
             @click="focus = false"
           >
