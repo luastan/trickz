@@ -74,6 +74,17 @@ export default {
       localStorage.setItem(`document-${this.doc.slug}-version`, this.doc.version)
     }
     if (!this.$isServer) {
+      document.querySelectorAll(".nuxt-content :is(h1,h2,h3,h4,h5,h6)").forEach(heading => {
+        heading.onclick = ({target}) => {
+          let url = new URL(window.location.href);
+          url.hash = `${target.id}`
+          navigator.clipboard.writeText(url.toString())
+          this.$nuxt.$emit('toast-message', "Link copied !")
+        }
+      })
+
+
+
       setTimeout(this.enhanceCodeBlocks,);
     }
 

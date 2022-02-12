@@ -18,7 +18,7 @@
             v-model="q"
             class="block w-full pl-10 pr-3 py-2 truncate leading-5 placeholder-gray-500 border border-transparent text-gray-700 dark:text-white dark-focus:text-white focus:border-gray-300 dark-focus:border-gray-700 rounded-md focus:outline-none focus:bg-white dark-focus:bg-gray-900 bg-gray-200 dark:bg-gray-800"
             :class="{ 'rounded-b-none': focus && (searching || results.length) }"
-            placeholder="Search"
+            placeholder="Click or press / to search"
             type="search"
             autocomplete="off"
             @focus="onFocus"
@@ -43,7 +43,7 @@
             :to="result.path"
             class="flex px-4 py-2 items-center leading-5 transition ease-in-out duration-150"
             :class="{
-            'text-primary-500 bg-gray-200 dark:bg-gray-800': focusIndex === index
+            'text-primary-500 bg-gray-100 dark:bg-gray-800': focusIndex === index
           }"
             @click="focus = false"
           >

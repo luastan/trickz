@@ -1,8 +1,7 @@
 <template>
   <nav
-    class="fixed dark:bg-gray-900 light-bg  transition-shadow tricks-nav top-0 z-40 w-full border-b dark:border-gray-800 "
+    class="tricks-navbar transition-shadow fixed dark:bg-gray-900 light-bg tricks-nav top-0 z-40 w-full border-b dark:border-gray-800 "
     :class="{ 'shadow border-transparent': scrolled && allowShadow }"
-    @click="scrollToTop"
   >
     <div class="container mx-auto flex-1 px-4 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -16,7 +15,7 @@
           <tricks-search  class="w-full"/>
         </div>
         <div class="social lg:w-1/5 flex items-center justify-end">
-          <tricks-change-color class="hidden lg:block"/>
+          <tricks-change-color class="hidden lg:block tricks-icon"/>
           <a target="_blank" class="hidden lg:block" href="https://twitter.com/luastan">
             <icons-twitter/>
           </a>
@@ -79,6 +78,10 @@ export default {
 </script>
 
 <style scoped>
+.tricks-navbar{
+
+}
+
 html:not(.dark) .light-bg {
   background-color: rgba(255, 255, 255, .7);
   @apply backdrop-blur

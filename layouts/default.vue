@@ -12,6 +12,7 @@
           class="layout-nav-tricks z-30 w-1/5 fixed hidden lg:block bg-white"
           :categories="categories"
         />
+        <Nuxt class="w-full lg:w-4/5"/>
         <transition name="fade">
           <div
             v-if="showMobileMenu"
@@ -23,6 +24,7 @@
         </transition>
         <transition name="slide-left">
           <tricks-nav
+            @close="showMobileMenu = false"
             :categories="categories"
             v-if="showMobileMenu"
             class="layout-nav-tricks mobile dark:bg-gray-800 bg-white h-full flex-1 flex-grow w-full z-30 sm:w-7/12 md:w-5/12 fixed lg:hidden shadow-lg backdrop-blur"
@@ -30,7 +32,7 @@
           />
         </transition>
 
-        <Nuxt class="w-full lg:w-4/5"/>
+
       </div>
     </main>
     <tricks-footer class="w-full border-t border-gray-200 dark:border-gray-800"/>
@@ -88,9 +90,16 @@ export default {
 </script>
 
 <style scoped>
-html:not(.dark) .mobile {
-  background-color: rgba(255, 255, 255, 0.8);
 
+@screen sm {
+  html:not(.dark) .mobile {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+
+html:not(.dark) .mobile {
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .layout-nav-tricks {

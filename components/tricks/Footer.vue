@@ -1,13 +1,11 @@
 <template>
   <footer
-    class="tricks-foooter w-full relative flex items-center justify-center">
-    <div class="container h-16 flex items-center justify-between px-4 lg:px-8">
+    class="tricks-foooter h-16 w-full relative flex items-center justify-center">
+    <div class="container flex items-center justify-between px-4 lg:px-8">
       <div>
         By @luastan
       </div>
-      <div>
-        <tricks-change-color/>
-      </div>
+      <tricks-change-color class="h-5 w-5"/>
     </div>
   </footer>
 </template>

@@ -91,8 +91,21 @@ export default {
 </script>
 
 <style scoped>
+
+.smart-input {
+  transition-property: outline-color;
+  transition-duration: .37s;
+  transition-timing-function: ease;
+  outline-offset: 4px;
+  outline-color: transparent;
+  @apply outline-2
+}
+.smart-input:focus-within {
+  @apply outline-blue-600 outline rounded
+}
+
 .smart-input > .cell {
-  @apply px-4 py-1 border-gray-200 dark:border-gray-800 dark:bg-gray-600 transition-all
+  @apply px-4 py-1 border-gray-200 outline-0 dark:border-gray-800 dark:bg-gray-600 appearance-none
 }
 
 .smart-input > .cell.title {
