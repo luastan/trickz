@@ -168,7 +168,7 @@ export default {
   },
   async asyncData({$content, store, app, params, error}) {
 
-    const path = `/${params.pathMatch || 'tricks'}`;
+    const path = `/${params.pathMatch || '0-tricks'}`;
 
     const [document] = await $content({deep: true}).where({path}).fetch()
     if (!document) {

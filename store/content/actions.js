@@ -48,12 +48,12 @@ export default {
         mainCategories[pathParts.join('/')].children[least].children[doc.path] = doc;
       });
 
-    mainCategories['/tricks'].children['/sitemap'] = {
-      title: 'Sitemap',
-      slug: 'sitemap',
-      path: '/tricks/sitemap',
-      children: {},
-    };
+    // mainCategories['/0-tricks'].children['/sitemap'] = {
+    //   title: 'Sitemap',
+    //   slug: 'sitemap',
+    //   path: '/tricks/sitemap',
+    //   children: {},
+    // };
     commit('setCategories', mainCategories);
 
   },
