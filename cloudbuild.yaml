@@ -15,12 +15,23 @@ steps:
     - name: 'ssh'
       path: /root/.ssh
 
-  # Update clone the content
+  # Clone the content
   - name: 'gcr.io/cloud-builders/git'
     args:
     - clone
     - git@github.com:luastan/tricks-content.git
     - content
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+    # Copy the images to the static directory
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+  args:
+    - -c
+    - |
+      find content -regex '.*\(jpg\|jpeg\|png\|jfif\|gif\)' \! -path './static/*' -exec cp -t static {} +
     volumes:
     - name: 'ssh'
       path: /root/.ssh
