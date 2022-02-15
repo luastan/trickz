@@ -21,8 +21,8 @@
       <div class="flex items-center justify-between h-16">
         <div class="lg:w-1/5 flex items-center pr-4">
           <nuxt-link to="/" class="flex-shrink-0 flex items-center justify-start dark:text-gray-200 flex-1 font-bold text-xl">
-            <icons-trickz class="stroke-gray-900 fill-gray-900 dark:fill-gray-200 dark:stroke-gray-200 h-10 mr-4"/>
-            <span>Trickz</span>
+            <icons-trickz class="stroke-gray-900 fill-gray-900 dark:fill-gray-200 dark:stroke-gray-200 h-10"/>
+            <span class="ml-4 hidden lg:block">Trickz</span>
           </nuxt-link>
         </div>
         <div class="flex-1 flex justify-start w-4/6">
