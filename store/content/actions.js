@@ -4,8 +4,17 @@ export default {
     //   return
     // }
     const docs = (await this.$content('/', {deep: true})
-      .only(['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'path'])
-      .sortBy('path', 'asc')
+      .only([
+        'title',
+        'menuTitle',
+        'position',
+        'category',
+        'slug',
+        'version',
+        'to',
+        'path',
+      ])
+      .sortBy('position', 'asc')
       .fetch())
       .map(doc => ({...doc, path: `${doc.path}`}));
 
