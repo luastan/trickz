@@ -18,13 +18,6 @@ export default {
       .fetch())
       .map(doc => ({...doc, path: `${doc.path}`}));
 
-    // console.log(`
-    //
-    // ${JSON.stringify(docs)}
-    //
-    // `)
-
-
     const mainCategories = {};
 
     // main
@@ -57,12 +50,6 @@ export default {
         mainCategories[pathParts.join('/')].children[least].children[doc.path] = doc;
       });
 
-    // mainCategories['/0-tricks'].children['/sitemap'] = {
-    //   title: 'Sitemap',
-    //   slug: 'sitemap',
-    //   path: '/tricks/sitemap',
-    //   children: {},
-    // };
     commit('setCategories', mainCategories);
 
   },
