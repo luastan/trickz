@@ -1,15 +1,22 @@
 <template>
-  <div v-if="toc.length" class="w-full lg:w-1/4 block relative">
+  <div v-if="toc.length || editLink !== null" class="w-full lg:w-1/4 block relative">
     <div class="lg:sticky lg:top-16 overflow-y-auto h-full fancy-scrollbar lg:h-auto lg:max-h-(screen-16)">
       <nav
         class="py-4 lg:py-8 lg:pl-8 lg:pr-4"
       >
         <p
+          v-if="toc.length"
           class="mb-3 lg:mb-2 text-gray-500 dark:text-gray-600 uppercase tracking-wider font-bold text-sm lg:text-xs"
         >
           Contents
         </p>
-        <scrollactive highlight-first-item active-class="text-primary-500" :offset="0" tag="ul">
+        <scrollactive
+          v-if="toc.length"
+          highlight-first-item
+          active-class="text-primary-500"
+          :offset="0"
+          tag="ul"
+        >
           <li
             v-for="link of toc"
             :key="link.id"
@@ -31,6 +38,14 @@
             >{{ link.text }}</a>
           </li>
         </scrollactive>
+        <a
+          :href="editLink"
+          target="_blank"
+          class="mt-3 block flex items-center justify-start f relative lg:mb-2 text-gray-500 dark:text-gray-600 uppercase tracking-wider font-bold text-sm lg:text-xs"
+          v-if="editLink !== null">
+          Edit on Github
+          <icons-pencil class="ml-2 h-4 w-4 stroke-gray-600 fill-gray-600 text-gray-400"/>
+        </a>
       </nav>
     </div>
   </div>
@@ -43,7 +58,11 @@ export default {
     toc: {
       type: Array,
       default: []
-    }
+    },
+    editLink: {
+      type: String,
+      default: null,
+    },
   },
 }
 </script>

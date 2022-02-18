@@ -29,7 +29,7 @@
       <!--      <AppPrevNext :prev="prev" :next="next" />-->
     </div>
 
-    <tricks-toc :toc="doc.toc"/>
+    <tricks-toc :edit-link="`https://github.com/luastan/tricks-content/edit/master${documentPath}.md`" :toc="doc.toc"/>
   </div>
 </template>
 
@@ -82,9 +82,6 @@ export default {
           this.$nuxt.$emit('toast-message', "Link copied !")
         }
       })
-
-
-
       setTimeout(this.enhanceCodeBlocks,);
     }
 
@@ -164,6 +161,9 @@ export default {
   computed: {
     contentDoc() {
       return this.doc;
+    },
+    documentPath() {
+      return `/${this.$route.params.pathMatch || 'tricks'}`
     },
   },
   async asyncData({$content, store, app, params, error}) {
