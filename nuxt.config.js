@@ -92,7 +92,8 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
-    liveEdit: false,
+    liveEdit: true,  // No worries. It will only work in development
+    editor: '~/components/tricks/ContentEditor.vue',
     markdown: {
       prism: {
         theme: '~/assets/css/code-snippets-theme.css'

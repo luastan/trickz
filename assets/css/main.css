@@ -123,3 +123,18 @@ body {
   @apply bg-gray-200 dark:bg-gray-800
 }
 
+
+/* Input stuff */
+
+.tricks-input-outline {
+  transition-property: outline-color;
+  transition-duration: .37s;
+  transition-timing-function: ease;
+  outline-offset: 4px;
+  outline-color: transparent;
+  @apply outline-2
+}
+.tricks-input-outline:focus-within,
+.tricks-input-outline:focus {
+  @apply outline-blue-600 outline rounded
+}

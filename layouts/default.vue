@@ -9,7 +9,7 @@
     <main class="container flex flex-col flex-grow flex-1 h-full mx-auto px-4 lg:px-8">
       <div class="flex flex-wrap relative flex-grow flex-1 h-full w-full">
         <tricks-nav
-          class="layout-nav-tricks z-30 w-1/5 fixed hidden lg:block bg-white"
+          class="layout-nav-tricks z-30 w-1/5 hidden lg:block bg-white"
           :categories="categories"
         />
         <Nuxt class="w-full lg:w-4/5"/>

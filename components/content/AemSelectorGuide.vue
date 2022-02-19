@@ -93,23 +93,23 @@
     <div
       class="w-full explaination-card border-y py-4 mt-4"
     >
-      <transition name="fade" duration="2000">
-        <div v-if="hoveredElement === 'base-url'">
+      <transition name="fade" mode="out-in">
+        <div key="base-url" v-if="hoveredElement === 'base-url'">
           <b>Base URL:</b> This is the base URL where the AEM application sits. This could include part of the path depending on the server configuration.
         </div>
-        <div v-else-if="hoveredElement === 'node-path'">
+        <div key="node-path" v-else-if="hoveredElement === 'node-path'">
           <b>Path:</b> Node location would be specified as your traditional file directory. Everything starts from <b class="text-amber-400">/</b> that is called <b class="text-amber-400">jcr:root</b> in AEM.
         </div>
-        <div v-else-if="hoveredElement === 'output-format'">
+        <div key="output-format" v-else-if="hoveredElement === 'output-format'">
           <b>Format:</b> Indicates the format that retrieved data from the specified node should have. In this case <b class="text-rose-500">JSON</b>.
         </div>
-        <div v-else-if="hoveredElement === 'selector-depth'">
+        <div key="selector-depth" v-else-if="hoveredElement === 'selector-depth'">
           <b>Depth:</b> A number (in this case <b class="text-blue-500">3</b>) indicates the maximum depth of nested properties that should be returned.
         </div>
-        <div v-else-if="hoveredElement === 'selector-tidy'">
+        <div key="selector-tidy" v-else-if="hoveredElement === 'selector-tidy'">
           <b>Tidy:</b> Some formats admit special selectors. JSON format admits <b class="text-blue-500">.tidy</b> as an indicator to <i>beautify</i> the output.
         </div>
-        <div v-else>
+        <div key="jcr-node" v-else>
           <b>Example: </b>Get JCR nodes with properties starting from <b class="text-amber-400">jcr:root</b> with <b class="text-blue-500">depth 3</b> and return them in a <b class="text-blue-500">beautified</b> <b class="text-rose-500">JSON format</b>.
         </div>
       </transition>
@@ -122,7 +122,19 @@ export default {
   name: "aem-selector-guide",
   data() {
     return {
-      hoveredElement: null
+      _hoveredElement: null,
+    }
+  },
+  computed: {
+    hoveredElement: {
+      get() {
+        return this.$data._hoveredElement;
+      },
+      set(value) {
+        if (value !== this.$data._hoveredElement) {
+          this.$data._hoveredElement = value;
+        }
+      },
     }
   },
 }

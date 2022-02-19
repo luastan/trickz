@@ -22,6 +22,7 @@
         </header>
 
         <NuxtContent
+          id="content-container"
           ref="nuxtContentRoot"
           :document="contentDoc"/>
       </article>
@@ -192,4 +193,8 @@ export default {
 /*ul.tricks-checklist {*/
 /*  list-style: none;*/
 /*}*/
+
+#content-container {
+  @apply static
+}
 </style>

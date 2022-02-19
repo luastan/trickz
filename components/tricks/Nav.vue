@@ -87,7 +87,6 @@ export default {
   },
   methods: {
     emitClose(category) {
-      console.log(category)
       if (!this.categoryHasChildren(category)) {
         this.$emit('close');
       }
