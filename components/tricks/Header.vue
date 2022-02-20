@@ -10,7 +10,7 @@
       >
         <div
           @click="scrollToTop"
-          class="scroll-top-pill select-none shadow-lg cursor-pointer bg-gray-900 text-gray-100 dark:bg-gray-800 dark:text-gray-200 pointer-events-auto mt-4 py-1 px-4 rounded-l rounded-l-full rounded-r-full"
+          class="scroll-top-pill select-none shadow-lg cursor-pointer bg-gray-900 text-gray-100 dark:bg-gray-800 dark:text-gray-200 pointer-events-auto mt-4 py-1 px-4 rounded-l-full rounded-r-full"
         >
           Scroll to top
         </div>
