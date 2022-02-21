@@ -196,4 +196,8 @@ export default {
 #content-container {
   @apply static
 }
+
+#content-container .nuxt-content-highlight {
+  @apply relative
+}
 </style>
