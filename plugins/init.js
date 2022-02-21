@@ -16,7 +16,7 @@ export default async function ({store}) {
   }
 
   // In SPA mode, load if there is no categories already
-  if (process.client && store.getters['content/isLoadingPending']) {
+  if (store.getters['content/isLoadingPending']) {
     await store.dispatch('content/fetchCategories');
   }
 

@@ -8,11 +8,14 @@
       type="text"
       v-model:value="inputValue"
     >
-    <div
-      @click="inputValue = defaultValue"
-      class="h-full cursor-pointer absolute flex items-center justify-center right-0 px-2">
-      <icons-reset class="h-5 w-5 stroke-gray-600 fill-gray-600 dark:stroke-gray-400 dark:fill-gray-400"/>
-    </div>
+    <transition name="fade">
+      <div
+        v-if="inputValue !== defaultValue"
+        @click="inputValue = defaultValue"
+        class="h-full rounded-r backdrop-blur cursor-pointer absolute flex items-center justify-center right-0 px-2">
+        <icons-reset class="h-5 w-5 stroke-gray-600 fill-gray-600 dark:stroke-gray-400 dark:fill-gray-400"/>
+      </div>
+    </transition>
   </div>
 </template>
 

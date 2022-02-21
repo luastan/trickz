@@ -110,7 +110,9 @@ export default {
       if (file.extension !== '.md') {
         return
       }
-      // const window = new JSDOM('').window;
+
+      // TODO: Get smart variables and put them on the document options yaml
+
       // const DOMPurify = createDOMPurify(window);
       // file.data = DOMPurify.sanitize(file.data, {
       //   ADD_TAGS: [

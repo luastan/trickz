@@ -40,8 +40,7 @@ import Vuex from 'vuex'
 import SmartInput from "@/components/smart/Input";
 import CopyCode from "@/components/tricks/CopyCode";
 
-const findTemplate = new RegExp('')
-
+const findTplRegex = /{{ ?([a-zA-Z\-]+) ([^}]+) ?}}/g;
 
 export default {
   data() {
@@ -102,7 +101,7 @@ export default {
       Vue.use(Vuex);
       for (const block of blocks) {
         block.childNodes.forEach(node => node.classList.add('fancy-scrollbar'));
-        const regexResults = block.textContent.matchAll(/{{ ?([a-zA-Z\-]+) ([^}]+) ?}}/g);
+        const regexResults = block.textContent.matchAll(findTplRegex);
         const lastMatch = {
           variable: "",
           defaultValue: "",
@@ -112,7 +111,7 @@ export default {
           const variable = match[1];
           const defaultValue = match[2].trim();
           block.innerHTML = block.innerHTML.replaceAll(
-            /{{ ([a-zA-Z\-]+) ([^}]+) }}/g,
+            findTplRegex,
             '<span class="smart-$1">$2</span>'
           );
           if (found[variable] === undefined) {
