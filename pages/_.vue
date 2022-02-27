@@ -1,8 +1,8 @@
 <template class="fancy-scrollbar">
-  <nuxt-child
+  <component
     class="w-full"
     :content-doc="contentDoc"
-    :renderer="computedRenderer"
+    :is="computedRenderer"
   />
 </template>
 <script>
@@ -14,7 +14,11 @@ export default {
       return this.doc;
     },
     computedRenderer() {
-      return this.contentDoc.type || 'markdown';
+      const renderers = {
+        'markdown': 'render-markdown-content',
+        'test': 'render-test-content',
+      };
+      return renderers[this.contentDoc.type || 'markdown'] || 'render-markdown-content';
     },
   },
 
