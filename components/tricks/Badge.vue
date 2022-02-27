@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "Badge"
+  name: "tricks-badge"
 }
 </script>
 

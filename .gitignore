@@ -93,3 +93,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Nuxt storm autocompletion
+.components.gen.js

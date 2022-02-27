@@ -11,6 +11,7 @@ export default {
         'category',
         'slug',
         'version',
+        'extension',
         'to',
         'path',
       ])

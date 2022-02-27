@@ -8,7 +8,7 @@
 
     <main class="container flex flex-col flex-grow flex-1 h-full mx-auto px-4 lg:px-8">
       <div class="flex flex-wrap relative flex-grow flex-1 h-full w-full">
-        <tricks-nav
+        <tricks-sidebar
           class="layout-nav-tricks z-30 w-1/5 hidden lg:block bg-white"
           :categories="categories"
         />
@@ -23,12 +23,11 @@
           </div>
         </transition>
         <transition name="slide-left">
-          <tricks-nav
+          <tricks-sidebar
             @close="showMobileMenu = false"
             :categories="categories"
             v-if="showMobileMenu"
             class="layout-nav-tricks mobile dark:bg-gray-800 bg-white h-full flex-1 flex-grow w-full z-30 sm:w-7/12 md:w-5/12 fixed lg:hidden shadow-lg backdrop-blur"
-
           />
         </transition>
 

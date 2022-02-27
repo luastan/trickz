@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import smartComponents from "@/mixins/smartComponents";
+import smartComponents from "../../mixins/smartComponents";
 
 export default {
   name: "SmartInput",

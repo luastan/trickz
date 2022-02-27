@@ -12,7 +12,7 @@
 <script>
 
 export default {
-  name: "CopyCode",
+  name: "TricksCopyCode",
   data() {
     return {
       copied: false,
@@ -20,12 +20,15 @@ export default {
   },
   methods: {
     handleCopy() {
+      console.log("test")
       navigator.clipboard.writeText(this.$refs.copyRoot.parentElement.querySelector("pre > code").innerText.slice(0, -1));
       this.copied = true;
       const vm = this;
       setTimeout(function () {
         vm.copied = false;
       }, 5200);
+      console.log("cmon");
+      console.log(this.copied)
       this.$nuxt.$emit('toast-message', "Snippet copied to clipboard !");
     },
   }

@@ -78,7 +78,7 @@
 
 <script>
 export default {
-  name: "TricksNav",
+  name: "TricksSidebar",
   props: {
     'categories': {
       type: Object,

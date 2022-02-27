@@ -1,8 +1,4 @@
-import {data} from "autoprefixer";
-
-const createDOMPurify = require('dompurify');
-const { JSDOM } = require('jsdom');
-
+import {beforeInsert, beforeParse, highlighter} from './contentEnhancements/content-tricks-extensions'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -35,6 +31,9 @@ export default {
 
     // Fonts
     '~/assets/fonts/inter/inter.css',
+
+    // Snippets css
+    '~/assets/css/code-snippets-theme.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -60,7 +59,13 @@ export default {
     '@nuxt/postcss8',
 
     '@nuxtjs/color-mode',
+
+    ['nuxt-storm', {
+      nested: true,
+      alias: true,
+    }],
   ],
+
 
   // Enables dark mode
   colorMode: {
@@ -97,8 +102,9 @@ export default {
     markdown: {
       prism: {
         theme: '~/assets/css/code-snippets-theme.css'
-      }
-    }
+      },
+      highlighter
+    },
   },
 
   serverMiddleware: [
@@ -106,25 +112,8 @@ export default {
   ],
 
   hooks: {
-    'content:file:beforeParse': (file) => {
-      if (file.extension !== '.md') {
-        return
-      }
-
-      // TODO: Get smart variables and put them on the document options yaml
-
-      // const DOMPurify = createDOMPurify(window);
-      // file.data = DOMPurify.sanitize(file.data, {
-      //   ADD_TAGS: [
-      //     'tricks-paste-markdown',
-      //   ],
-      // });
-      file.data = file.data.replace(/\[ ] (.*)/g, '<smart-check variable="test" :value="1===2">$1</smart-check>');
-      file.data = file.data.replace(/(\[x]|\[X]) (.*)/g, '<smart-check variable="test" :value="true">$2</smart-check>');
-    },
-    "content:file:beforeInsert": (document, database) => {
-      // console.log(JSON.stringify(document));
-    },
+    'content:file:beforeParse': beforeParse,
+    'content:file:beforeInsert': beforeInsert,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
