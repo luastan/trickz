@@ -75,10 +75,17 @@ if (!Prism.plugins.KeepMarkup) {
      * @returns {boolean}
      */
     function shouldKeep(element) {
-      if (dropTokens && element.nodeName && element.nodeName.toLowerCase() === 'span' && element.classList.contains('token')) {
+      const whitelist = [
+        'smart-variable',
+        'span',
+        'b',
+        'i',
+      ];
+      if (dropTokens && element.nodeName && whitelist.includes(element.nodeName.toLowerCase()) && element.classList.contains('token')) {
         return false;
       }
-      return  element.nodeName && (element.nodeName.toLowerCase() === 'span' || element.nodeName.toLowerCase() === 'b' || element.nodeName.toLowerCase() === 'i');
+      console.log(whitelist.includes(element.nodeName.toLowerCase()))
+      return  element.nodeName && whitelist.includes(element.nodeName.toLowerCase());
     }
 
     var pos = 0;
@@ -217,12 +224,13 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
   //     ? escapeHtml(rawCode) : rawCode;
   rawCode = escapeHtml(rawCode);
 
+  const regexResults = rawCode.matchAll(findTplRegex);
 
   rawCode = rawCode.replaceAll(
     findTplRegex,
-    '<span class="smart-$1">$2</span>',
+    '<smart-variable variable="$1">$2</smart-variable>',
   );
-  const regexResults = rawCode.matchAll(findTplRegex);
+
 
 
 
@@ -284,8 +292,21 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
   //   found[variable] = true;
   // }
 
+  const smartVariables = {};
 
-  return h(node, 'div', {className: ['nuxt-content-highlight', 'relative']}, childs)
+  for (const result of regexResults) {
+    const variable = result[1];
+    const defaultValue = result[2];
+    if (variable !== '__proto__') {
+      smartVariables[variable] = defaultValue;
+    }
+  }
+
+
+  return h(node, 'smart-code-block-wrapper', {
+    'smart-variables': JSON.stringify(smartVariables),
+    className: ['nuxt-content-highlight', 'relative'],
+  }, childs)
 }
 
 module.exports.highlighter = (code, language, {lineHighlights, fileName}, {h, node}) => {

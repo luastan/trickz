@@ -12,7 +12,7 @@ export default {
   props: {
     variable: {
       type: String,
-      default: "",
+      required: true,
     },
   },
 
@@ -20,9 +20,13 @@ export default {
     ...mapGetters({
       getSmartValue: "smart/getSmartValue",
     }),
+    storedSmartValue: {
+      get() {
+        return this.getSmartValue(this.variable);
+      },
+    }
   },
   methods: {
-
     ...mapMutations({
       storeSmartValue: 'smart/setSmartValue',
     }),

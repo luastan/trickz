@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import smartComponents from "@/mixins/smartComponents";
+import smartComponents from "../../mixins/smartComponents";
 
 export default {
   name: "SmartInput",
@@ -45,9 +45,9 @@ export default {
         .forEach(element => {
           element.textContent = vm.inputValue;
           try {
-            const possibleValue = vm.store.getters['smart/getSmartValue'](vm.variable)
+            const possibleValue = vm.$store.getters['smart/getSmartValue'](vm.variable)
             if (possibleValue === null || possibleValue === undefined) {
-              vm.store.commit('smart/setSmartValue', {key: vm.variable, value: vm.inputValue});
+              vm.$store.commit('smart/setSmartValue', {key: vm.variable, value: vm.inputValue});
             } else {
               vm.innerValue = possibleValue;
             }
@@ -65,7 +65,8 @@ export default {
     inputValue: {
       get() {
         try {
-          const smartValue = this.store.getters['smart/getSmartValue'](this.variable);
+          // const smartValue = this.$store.getters['smart/getSmartValue'](this.variable);
+          const smartValue = this.getSmartValue(this.variable);
           return (smartValue === null || smartValue === undefined) ? this.defaultValue : smartValue;
         } catch (e) {
           return this.innerValue;
@@ -73,16 +74,15 @@ export default {
 
       },
       set(newValue) {
-
         this.innerValue = newValue
         try {
-          this.$refs.smartElement?.parentElement?.querySelectorAll(`.smart-${this.variable}`)
-            .forEach(element => {
-              element.textContent = newValue;
-            });
-          this.store.commit('smart/setSmartValue', {key: this.variable, value: newValue});
+          this.setSmartValue(this.variable, newValue);
+          // document.querySelectorAll(`.smart-${this.variable}`)
+          //   .forEach(element => {
+          //     element.textContent = newValue;
+          //   });
+          // this.$store.commit('smart/setSmartValue', {key: this.variable, value: newValue});
         } catch (e) {
-
         }
 
       },

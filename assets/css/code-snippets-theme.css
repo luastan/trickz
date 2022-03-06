@@ -30,13 +30,6 @@
 
 
 
-/* Smart replacements */
-
-span[class*="smart-"] {
-  text-underline-mode: "";
-  border-bottom: 1px dotted;
-  @apply font-bold italic
-}
 
 /* Custom stuff */
 .token.property,
