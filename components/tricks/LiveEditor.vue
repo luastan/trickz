@@ -93,9 +93,6 @@ export default {
     document.execCommand('defaultParagraphSeparator', false, 'p')
   },
   methods: {
-    onBlur(event) {
-      console.log(event);
-    },
     onInput(event) {
       const turndown = new TurndownService({
         emDelimiter: '_',
