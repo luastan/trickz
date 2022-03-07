@@ -46,15 +46,15 @@ export default {
     }
 
     // In-line codeblocks
-    const vm = this;
-    document.querySelectorAll(":not(pre) > code")
-      .forEach(el => {
-        el.classList.add('copy-me');
-        el.onclick = ({target}) => {
-          navigator.clipboard.writeText(target.textContent)
-          vm.$nuxt.$emit('toast-message', "Text copied to clipboard !");
-        };
-      });
+    // const vm = this;
+    // document.querySelectorAll(":not(pre) > code")
+    //   .forEach(el => {
+    //     el.classList.add('copy-me');
+    //     el.onclick = ({target}) => {
+    //       navigator.clipboard.writeText(target.textContent)
+    //       vm.$nuxt.$emit('toast-message', "Text copied to clipboard !");
+    //     };
+    //   });
 
     const checkElements = document.getElementsByClassName('tricks-check');
     for (let checkElement of checkElements) {

@@ -18,6 +18,7 @@ exports.beforeParse = (file) => {
     return
   }
 
+  file.data = file.data.replace(/[^`]`([^`]+)`[^`]/g, '<tricks-copy-inline>$1</tricks-copy-inline>');
   file.data = file.data.replace(/\[ ] (.*)/g, '<smart-check variable="test" :value="1 === 2">$1</smart-check>');
   file.data = file.data.replace(/(\[x]|\[X]) (.*)/g, '<smart-check variable="test" :value="true">$2</smart-check>');
 }
