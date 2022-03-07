@@ -29,15 +29,12 @@
  */
 
 
-
-
 /* Custom stuff */
 .token.property,
 .token.tag,
 .token.symbol,
 .token.deleted,
-.token.important,
-.token.keyword {
+.token.important {
   @apply font-medium
 }
 
@@ -46,7 +43,7 @@
 html:not(.dark) code[class*="language-"],
 html:not(.dark) pre[class*="language-"] {
   background: hsl(230, 1%, 98%);
-  color: hsl(230, 8%, 24%);
+  color: #37474F;
 }
 
 html.dark code[class*="language-"],
@@ -109,26 +106,42 @@ pre[class*="language-"] {
 html:not(.dark) .token.comment,
 html:not(.dark) .token.prolog,
 html:not(.dark) .token.cdata {
-  color: hsl(230, 4%, 64%);
+  color: hsl(338, 78%, 48%);
 }
 
 html:not(.dark) .token.doctype,
 html:not(.dark) .token.punctuation,
 html:not(.dark) .token.entity {
-  color: hsl(230, 8%, 24%);
+  color: #37474F;
 }
 
 html:not(.dark) .token.attr-name,
-html:not(.dark) .token.class-name,
 html:not(.dark) .token.boolean,
-html:not(.dark) .token.constant,
-html:not(.dark) .token.number,
 html:not(.dark) .token.atrule {
-  color: hsl(35, 99%, 36%);
+  /*color: hsl(35, 99%, 36%);*/
+  color: hsl(200, 18%, 26%);
+}
+
+html:not(.dark) .token.constant {
+  color: hsl(291, 64%, 42%);
+  font-style: italic;
+}
+
+
+html:not(.dark) .token.boolean,
+html:not(.dark) .token.number {
+  color: hsl(338, 78%, 48%);
+  @apply font-semibold
+}
+
+html:not(.dark) .token.class-name {
+  /*color: hsl(200, 18%, 26%);*/
+  color: hsl(291, 64%, 42%);
 }
 
 html:not(.dark) .token.keyword {
-  color: hsl(301, 63%, 40%);
+  /*color: hsl(301, 63%, 40%);*/
+  color: hsl(195, 100%, 35%);
 }
 
 html:not(.dark) .token.property,
@@ -136,7 +149,11 @@ html:not(.dark) .token.tag,
 html:not(.dark) .token.symbol,
 html:not(.dark) .token.deleted,
 html:not(.dark) .token.important {
-  color: hsl(5, 74%, 59%);
+  color: hsl(291, 64%, 42%);
+}
+
+html:not(.dark) .token.annotation {
+  color: hsl(60, 100%, 25%);
 }
 
 html:not(.dark) .token.selector,
@@ -147,32 +164,46 @@ html:not(.dark) .token.inserted,
 html:not(.dark) .token.regex,
 html:not(.dark) .token.attr-value,
 html:not(.dark) .token.attr-value > .token.punctuation {
-  color: hsl(119, 34%, 47%);
+  /*color: hsl(119, 34%, 47%);*/
+  color: hsl(150, 83%, 31%);
 }
 
-html:not(.dark) .token.variable,
-html:not(.dark) .token.operator,
+html:not(.dark) .token.variable {
+  color: hsl(195, 100%, 35%);
+}
+
 html:not(.dark) .token.function {
-  color: hsl(221, 87%, 60%);
+  color: hsl(28, 99%, 45%);
+}
+
+html:not(.dark) .token.operator {
+  color: hsl(200, 18%, 26%);
+  @apply font-semibold
 }
 
 html:not(.dark) .token.url {
-  color: hsl(198, 99%, 37%);
+  /*color: hsl(198, 99%, 37%);*/
+  color: hsl(195, 100%, 35%);
+}
+
+/* Java overrides */
+html:not(.dark) .language-java .token.class-name {
+  color: hsl(200, 18%, 26%);
 }
 
 /* HTML overrides */
 html:not(.dark) .token.attr-value > .token.punctuation.attr-equals,
 html:not(.dark) .token.special-attr > .token.attr-value > .token.value.css {
-  color: hsl(230, 8%, 24%);
+  color: hsl(200, 18%, 26%);
 }
 
 /* CSS overrides */
 html:not(.dark) .language-css .token.selector {
-  color: hsl(5, 74%, 59%);
+  color: hsl(28, 99%, 45%);
 }
 
 html:not(.dark) .language-css .token.property {
-  color: hsl(230, 8%, 24%);
+  color: hsl(200, 18%, 26%);
 }
 
 html:not(.dark) .language-css .token.function,
@@ -189,10 +220,6 @@ html:not(.dark) .language-css .token.atrule .token.rule {
   color: hsl(301, 63%, 40%);
 }
 
-/* JS overrides */
-html:not(.dark) .language-javascript .token.operator {
-  color: hsl(301, 63%, 40%);
-}
 
 html:not(.dark) .language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
   color: hsl(344, 84%, 43%);
@@ -200,18 +227,37 @@ html:not(.dark) .language-javascript .token.template-string > .token.interpolati
 
 /* JSON overrides */
 html:not(.dark) .language-json .token.operator {
-  color: hsl(230, 8%, 24%);
+  color: hsl(200, 18%, 26%);
 }
 
 html:not(.dark) .language-json .token.null.keyword {
   color: hsl(35, 99%, 36%);
 }
 
+
+/* HTTP overrides */
+
+html:not(.dark) .language-http {
+
+}
+
+html:not(.dark) .language-http .token.method {
+  color: hsl(28, 99%, 45%);
+}
+
+html:not(.dark) .language-http .token.http-version {
+  color: hsl(200, 18%, 26%);
+}
+
+html:not(.dark) .language-http .token.url {
+  color: hsl(301, 63%, 40%);
+}
+
 /* MD overrides */
 html:not(.dark) .language-markdown .token.url,
 html:not(.dark) .language-markdown .token.url > .token.operator,
 html:not(.dark) .language-markdown .token.url-reference.url > .token.string {
-  color: hsl(230, 8%, 24%);
+  color: hsl(200, 18%, 26%);
 }
 
 html:not(.dark) .language-markdown .token.url > .token.content {
@@ -249,12 +295,8 @@ html:not(.dark) .language-markdown .token.title.important > .token.punctuation {
 }
 
 /* General */
-html:not(.dark) .token.bold {
-  font-weight: bold;
-}
 
-html:not(.dark) .token.comment,
-html:not(.dark) .token.italic {
+html:not(.dark) .token.comment {
   font-style: italic;
 }
 
@@ -454,9 +496,6 @@ html:not(.dark) .prism-previewer-easing.prism-previewer-easing line {
 html:not(.dark) .prism-previewer-easing.prism-previewer-easing circle {
   fill: transparent;
 }
-
-
-
 
 
 html.dark .token.comment,
