@@ -84,7 +84,6 @@ if (!Prism.plugins.KeepMarkup) {
       if (dropTokens && element.nodeName && whitelist.includes(element.nodeName.toLowerCase()) && element.classList.contains('token')) {
         return false;
       }
-      console.log(whitelist.includes(element.nodeName.toLowerCase()))
       return  element.nodeName && whitelist.includes(element.nodeName.toLowerCase());
     }
 
