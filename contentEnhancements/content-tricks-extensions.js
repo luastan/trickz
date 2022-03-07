@@ -18,7 +18,7 @@ exports.beforeParse = (file) => {
     return
   }
 
-  file.data = file.data.replace(/[^`]`([^`]+)`[^`]/g, '<tricks-copy-inline>$1</tricks-copy-inline>');
+  // file.data = file.data.replace(/[^`]`([^`]+)`[^`]/g, '<tricks-copy-inline>$1</tricks-copy-inline>');
   file.data = file.data.replace(/\[ ] (.*)/g, '<smart-check variable="test" :value="1 === 2">$1</smart-check>');
   file.data = file.data.replace(/(\[x]|\[X]) (.*)/g, '<smart-check variable="test" :value="true">$2</smart-check>');
 }
@@ -220,6 +220,8 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
   // rawCode =
   //   guessedLang === 'html' ||
   //   guessedLang === 'markdown' ||
+  //   guessedLang === 'markup' ||
+  //   guessedLang === 'svg' ||
   //   guessedLang === 'xml'
   //     ? escapeHtml(rawCode) : rawCode;
   rawCode = escapeHtml(rawCode);
@@ -244,10 +246,10 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
     ? codeElement.innerHTML
     : rawCode
 
-  if (!lang || !grammer) {
-    lang = 'text'
-    code = escapeHtml(code)
-  }
+  // if (!lang || !grammer) {
+  //   lang = 'text'
+  //   code = escapeHtml(code)
+  // }
 
   const props = {
     className: [`language-${lang}`, 'line-numbers', 'fancy-scrollbar']
