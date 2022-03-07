@@ -24,7 +24,7 @@ html {
   @apply break-words;
 }
 
-.nuxt-content .nuxt-content-highlight > .filename {
+.nuxt-content .nuxt-content-highlight .filename {
   backdrop-filter: blur(12px);
   @apply absolute rounded px-2 italic mt-2 mr-2 py-2 top-0 right-0 font-mono tracking-tight leading-none
 }
