@@ -1,11 +1,16 @@
 <template>
   <div
-    class="tricks-copy-code rounded-lg border border-gray-200 bg-gray-100 dark:border-gray-700 hover:-translate-y-1 dark:bg-gray-800 hover:shadow-lg z-20 cursor-pointer absolute px-3 py-3 shadow mr-3 mb-3 bottom-0 right-0 flex items-center justify-center"
-    @click.prevent="handleCopy"
     ref="copyRoot"
+    class="wrapper py-4 pointer-events-none w-full h-full absolute right-0 bottom-0 flex items-end justify-end"
   >
-    <icons-copy-check v-if="copied"/>
-    <icons-copy class="fill-gray-600 dark:fill-gray-400" v-else/>
+    <div
+      class="tricks-copy-code pointer-events-auto sticky bottom-4 rounded-lg  border border-gray-200 bg-gray-100 dark:border-gray-700 hover:-translate-y-1 dark:bg-gray-800 hover:shadow-lg z-20 cursor-pointer sticky px-3 py-3 shadow mr-3 flex items-center justify-center"
+      @click.prevent="handleCopy"
+
+    >
+      <icons-copy-check v-if="copied"/>
+      <icons-copy class="fill-gray-600 dark:fill-gray-400" v-else/>
+    </div>
   </div>
 </template>
 
@@ -33,7 +38,7 @@ export default {
 </script>
 
 <style scoped>
-*:hover > .tricks-copy-code {
+*:hover > .wrapper > .tricks-copy-code {
   opacity: 100;
 }
 
