@@ -53,7 +53,7 @@ function buildDateQuery(filePath) {
   repository(owner: "luastan", name: "tricks-content") {
     object(expression: "master") {
       ... on Commit {
-        history(first: 100, path: "${filePath.substring(1)}") {
+        history(first: 1, path: "${filePath.substring(1)}") {
           edges {
             node {
               commitUrl
@@ -111,14 +111,17 @@ exports.beforeInsert = ghToken => (async (document, database) => {
     },
     method: "POST"
   });
-  document.lastCommittedDate = (await res.json())
-    .data
-    .repository
-    .object
-    .history
-    .edges[0]
-    .node
-    .committedDate;
+
+  if (res.status === 200) {
+    document.lastCommittedDate = (await res.json())
+      .data
+      .repository
+      .object
+      .history
+      .edges[0]
+      .node
+      .committedDate;
+  }
 })
 
 

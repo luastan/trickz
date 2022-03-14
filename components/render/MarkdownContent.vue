@@ -13,7 +13,7 @@
       <tricks-github-info
         class="mt-6"
         v-if="contentDoc.contributors"
-        :last-update="new Date(Date.parse(contentDoc.lastCommittedDate))"
+        :last-update="new Date(Date.parse(contentDoc.lastCommittedDate || contentDoc.updatedAt))"
         :contributors="contentDoc.contributors"
         :edit-link="editLink"
       />

@@ -1,11 +1,12 @@
 <template>
   <div class="w-full border-t border-gray-200 dark:border-gray-800 pt-4 not-prose">
-<!--    <div class="mb-4 text-lg font-semibold">-->
-<!--      Contributors:-->
-<!--    </div>-->
+    <!--    <div class="mb-4 text-lg font-semibold">-->
+    <!--      Contributors:-->
+    <!--    </div>-->
     <div class="flex items-center justify-between mb-4 text-sm text-gray-400 dark:text-gray-500">
       <a :href="editLink" target="_blank" class="hover:underline flex items-center justify-start">
-        <icons-pencil class="mr-1 h-4 fill-gray-400"/><span>Edit this page on GitHub</span>
+        <icons-pencil class="mr-1 h-4 fill-gray-400"/>
+        <span>Edit this page on GitHub</span>
       </a>
       <div>
         Updated at {{ lastUpdate | enShortTextDate }}
@@ -27,9 +28,9 @@
         <a
           target="_blank"
           :href="contributor.user.url"
-          class="block px-3 h-8 flex items-center justify-start font-medium"
+          class="block px-3 h-8 flex items-center justify-start"
         >
-          {{contributor.user.name}}
+          <span class="font-medium">{{ contributor.user.name }}</span>
         </a>
       </li>
     </ul>
