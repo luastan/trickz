@@ -2,43 +2,44 @@ steps:
 
   # Access the id_github file from Secret Manager, and setup SSH
   - name: 'gcr.io/cloud-builders/git'
-    secretEnv: ['SSH_KEY']
+    secretEnv: [ 'SSH_KEY' ]
     entrypoint: 'bash'
     args:
-    - -c
-    - |
-      echo "$$SSH_KEY" > /root/.ssh/id_rsa
-      chmod 400 /root/.ssh/id_rsa
-      cp known_hosts.github /root/.ssh/known_hosts
-      rm -rf content
+      - -c
+      - |
+        echo "$$SSH_KEY" > /root/.ssh/id_rsa
+        chmod 400 /root/.ssh/id_rsa
+        cp known_hosts.github /root/.ssh/known_hosts
+        rm -rf content
     volumes:
-    - name: 'ssh'
-      path: /root/.ssh
+      - name: 'ssh'
+        path: /root/.ssh
 
   # Clone the content
   - name: 'gcr.io/cloud-builders/git'
     args:
-    - clone
-    - git@github.com:luastan/tricks-content.git
-    - content
+      - clone
+      - git@github.com:luastan/tricks-content.git
+      - content
     volumes:
-    - name: 'ssh'
-      path: /root/.ssh
+      - name: 'ssh'
+        path: /root/.ssh
 
     # Copy the images to the static directory
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: 'bash'
     args:
-    - -c
-    - |
-      find content -regex '.*\(jpg\|jpeg\|png\|jfif\|gif\|svg\)' \! -path './static/*' -exec cp -t static {} +
+      - -c
+      - |
+        find content -regex '.*\(jpg\|jpeg\|png\|jfif\|gif\|svg\)' \! -path './static/*' -exec cp -t static {} +
     volumes:
-    - name: 'ssh'
-      path: /root/.ssh
+      - name: 'ssh'
+        path: /root/.ssh
 
   # Container image build
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '--build-arg', 'GH_TOKEN=$$GH_TOKEN', '-t', 'gcr.io/$PROJECT_ID/ssr-tricks', '.' ]
+    secretEnv: [ 'GH_TOKEN' ]
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
