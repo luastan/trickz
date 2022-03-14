@@ -38,7 +38,7 @@ steps:
 
   # Container image build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '--build-arg', '"GITHUB_TOKEN=$$GH_TOKEN"', '-t', 'gcr.io/$PROJECT_ID/ssr-tricks', '.' ]
+    args: [ 'build', '--build-arg', 'GITHUB_TOKEN=$$GH_TOKEN', '-t', 'gcr.io/$PROJECT_ID/ssr-tricks', '.' ]
     secretEnv: [ 'GH_TOKEN' ]
 
   # Push the container image to Container Registry
@@ -52,6 +52,7 @@ steps:
       '--image', 'gcr.io/$PROJECT_ID/ssr-tricks',
       '--region', 'europe-west1',
       '--platform', 'managed',
+      '--update-secrets', 'GH_TKN=gh-token:latest',
       '--no-allow-unauthenticated'
     ]
 

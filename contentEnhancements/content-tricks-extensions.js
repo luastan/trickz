@@ -1,5 +1,4 @@
-import {data} from "autoprefixer";
-import {raw} from "express";
+import fetch from 'node-fetch';
 
 const createDOMPurify = require('dompurify');
 const {JSDOM} = require('jsdom');
@@ -9,8 +8,6 @@ const {JSDOM} = require('jsdom');
 * Smart Variables Regex:
 * */
 const findTplRegex = /{{ +([a-zA-Z\-]+) ([^}]+) +}}/g;
-
-import fetch from 'node-fetch';
 
 
 exports.beforeParse = file => {
@@ -24,7 +21,7 @@ exports.beforeParse = file => {
 }
 
 
-function buildQuery(filePath) {
+function buildContributorQuery(filePath) {
   return `{
   repository(owner: "luastan", name: "tricks-content") {
     object(expression: "master") {
@@ -50,6 +47,26 @@ function buildQuery(filePath) {
 }`;
 }
 
+
+function buildDateQuery(filePath) {
+  return `{
+  repository(owner: "luastan", name: "tricks-content") {
+    object(expression: "master") {
+      ... on Commit {
+        history(first: 100, path: "${filePath.substring(1)}") {
+          edges {
+            node {
+              commitUrl
+              committedDate
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
+}
+
 exports.beforeInsert = ghToken => (async (document, database) => {
 
 
@@ -59,9 +76,9 @@ exports.beforeInsert = ghToken => (async (document, database) => {
     return
   }
 
-  const res = await fetch("https://api.github.com/graphql", {
+  let res = await fetch("https://api.github.com/graphql", {
     body: JSON.stringify({
-      query: buildQuery(`${document.path}${document.extension}`),
+      query: buildContributorQuery(`${document.path}${document.extension}`),
     }),
     headers: {
       Authorization: `token ${ghToken}`,
@@ -80,6 +97,28 @@ exports.beforeInsert = ghToken => (async (document, database) => {
       .map(n => n.author)
       .filter((value, index, self) => self.findIndex(author => author.user.login === value.user.login) === index);
   }
+
+
+  // Last commit date
+
+  res = await fetch("https://api.github.com/graphql", {
+    body: JSON.stringify({
+      query: buildDateQuery(`${document.path}${document.extension}`),
+    }),
+    headers: {
+      Authorization: `token ${ghToken}`,
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  });
+  document.lastCommittedDate = (await res.json())
+    .data
+    .repository
+    .object
+    .history
+    .edges[0]
+    .node
+    .committedDate;
 })
 
 
