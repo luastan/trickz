@@ -10,10 +10,10 @@ const {JSDOM} = require('jsdom');
 * */
 const findTplRegex = /{{ +([a-zA-Z\-]+) ([^}]+) +}}/g;
 
+import fetch from 'node-fetch';
 
 
-
-exports.beforeParse = (file) => {
+exports.beforeParse = file => {
   if (file.extension !== '.md') {
     return
   }
@@ -24,9 +24,63 @@ exports.beforeParse = (file) => {
 }
 
 
-exports.beforeInsert = (document, database) => {
-
+function buildQuery(filePath) {
+  return `{
+  repository(owner: "luastan", name: "tricks-content") {
+    object(expression: "master") {
+      ... on Commit {
+        history(first: 100, path: "${filePath.substring(1)}") {
+          nodes {
+            author {
+              email
+              name
+              user {
+                email
+                name
+                avatarUrl
+                login
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
 }
+
+exports.beforeInsert = ghToken => (async (document, database) => {
+
+
+  // Fetching the contributor list
+
+  if (ghToken === undefined || ghToken.length <= 0) {
+    return
+  }
+
+  const res = await fetch("https://api.github.com/graphql", {
+    body: JSON.stringify({
+      query: buildQuery(`${document.path}${document.extension}`),
+    }),
+    headers: {
+      Authorization: `token ${ghToken}`,
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  });
+
+  if (res.status === 200) {
+    document.contributors = (await res.json())
+      .data
+      .repository
+      .object
+      .history
+      .nodes
+      .map(n => n.author)
+      .filter((value, index, self) => self.findIndex(author => author.user.login === value.user.login) === index);
+  }
+})
 
 
 /*
@@ -85,7 +139,7 @@ if (!Prism.plugins.KeepMarkup) {
       if (dropTokens && element.nodeName && whitelist.includes(element.nodeName.toLowerCase()) && element.classList.contains('token')) {
         return false;
       }
-      return  element.nodeName && whitelist.includes(element.nodeName.toLowerCase());
+      return element.nodeName && whitelist.includes(element.nodeName.toLowerCase());
     }
 
     var pos = 0;
@@ -215,7 +269,6 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
   preElement.appendChild(codeElement);
 
 
-
   const guessedLang = (lang || grammer || 'text').toLowerCase();
   // rawCode =
   //   guessedLang === 'html' ||
@@ -232,8 +285,6 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
     findTplRegex,
     '<smart-variable variable="$1">$2</smart-variable>',
   );
-
-
 
 
   codeElement.innerHTML = rawCode;

@@ -113,7 +113,7 @@ export default {
 
   hooks: {
     'content:file:beforeParse': beforeParse,
-    'content:file:beforeInsert': beforeInsert,
+    'content:file:beforeInsert': beforeInsert(process.env['GH_TOKEN']),
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

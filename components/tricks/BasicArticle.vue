@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap-reverse">
     <!--    Root content -->
-    <div class="w-full py-4 lg:w-3/4 lg:pt-8 lg:pb-4 lg:border-r dark:border-gray-800">
+    <div class="w-full py-4 lg:w-3/4 lg:pt-8 lg:border-r dark:border-gray-800">
       <article class="prose dark:prose-invert max-w-none lg:px-8">
         <header class="w-full border-b border-gray-200 dark:border-gray-800 mb-4">
           <h1 class="flex items-center justify-between" v-if="title">

@@ -6,6 +6,11 @@ COPY . .
 
 RUN /usr/local/bin/yarn install
 
+# Setting build access to github repo
+ARG GH_TOKEN
+ENV GH_TOKEN $GH_TOKEN
+
+
 RUN /usr/local/bin/yarn build
 
 

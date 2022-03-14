@@ -3,13 +3,20 @@
     :title="contentDoc.title"
     :description="contentDoc.description"
     :badge="contentDoc.badge"
-    :edit-link="`https://github.com/luastan/tricks-content/edit/master${documentPath}${contentDoc.extension}`"
+    :edit-link="editLink"
   >
     <template>
       <NuxtContent
         id="content-container"
         ref="nuxtContentRoot"
         :document="contentDoc"/>
+      <tricks-github-info
+        class="mt-6"
+        v-if="contentDoc.contributors"
+        :last-update="new Date(Date.parse(contentDoc.updatedAt))"
+        :contributors="contentDoc.contributors"
+        :edit-link="editLink"
+      />
     </template>
     <template v-slot:sidebar>
       <tricks-toc
@@ -64,6 +71,9 @@ export default {
   computed: {
     documentPath() {
       return `/${this.$route.params.pathMatch || 'tricks'}`
+    },
+    editLink() {
+      return `https://github.com/luastan/tricks-content/edit/master${this.documentPath}${this.contentDoc.extension}`;
     },
   }
 }
