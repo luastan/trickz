@@ -8,7 +8,7 @@ RUN /usr/local/bin/yarn install
 
 # Setting build access to github repo
 ARG GITHUB_TOKEN
-ENV GH_TKN $GH_TOKEN
+ENV GH_TKN $GITHUB_TOKEN
 
 
 RUN /usr/local/bin/yarn build
