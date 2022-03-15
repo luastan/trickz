@@ -1,11 +1,11 @@
 <template>
-  <svg class="w-full tricks-animated-logo"
+  <svg class="w-full tricks-animated-logo bg-gray-900"
        viewBox="0 0 1024 1024"
        fill="none"
        xmlns="http://www.w3.org/2000/svg"
   >
     <!--    Background -->
-    <rect width="1024" height="1024" fill="#111827"/>
+<!--    <rect width="1024" height="1024" fill="#111827"/>-->
 
     <g class="full-logo" fill="#FAFAFAFA">
       <path d="M684.803 514V148.016H742.53V514H684.803Z" fill="#FAFAFA"/>
