@@ -81,4 +81,8 @@ export default {
 
 <style scoped>
 
+#content-container {
+  @apply mb-10
+}
+
 </style>
