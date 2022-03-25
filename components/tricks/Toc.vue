@@ -26,7 +26,7 @@
       >
         <a
           :href="`#${link.id}`"
-          class="block text-sm transition-padding ease-in-out duration-300 hover:pl-1"
+          class="block scrollactive-item text-sm transition-padding ease-in-out duration-300 hover:pl-1"
           :class="{
                 'py-2': link.depth === 2,
                 'ml-2 pb-2': link.depth === 3,
