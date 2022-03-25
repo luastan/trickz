@@ -1,3 +1,3 @@
 export default {
-  getSmartValue: (state) => (key) => state.content[`smart/${key}`],
+  getSmartValue: (state) => (key) => state.content ? state.content[`smart/${key}`]: undefined,
 }
