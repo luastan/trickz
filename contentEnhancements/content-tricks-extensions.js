@@ -72,7 +72,7 @@ exports.beforeInsert = ghToken => (async (document, database) => {
 
   // Fetching the contributor list
 
-  if (ghToken === undefined || ghToken.length <= 0) {
+  if (ghToken === undefined || ghToken === null || ghToken.length <= 0 || ghToken === "$GH_TOKEN") {
     return
   }
 
