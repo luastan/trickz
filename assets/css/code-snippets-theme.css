@@ -294,6 +294,15 @@ html:not(.dark) .language-markdown .token.title.important > .token.punctuation {
   color: hsl(5, 74%, 59%);
 }
 
+/* Shell overrides */
+
+html:not(.dark) .language-bash .token.variable,
+html:not(.dark) .language-shell .token.variable,
+html:not(.dark) .language-powershell .token.variable {
+  color: hsl(291, 64%, 42%);
+  font-style: italic;
+}
+
 /* General */
 
 html:not(.dark) .token.comment {
