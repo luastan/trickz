@@ -300,7 +300,6 @@ html:not(.dark) .language-bash .token.variable,
 html:not(.dark) .language-shell .token.variable,
 html:not(.dark) .language-powershell .token.variable {
   color: hsl(291, 64%, 42%);
-  font-style: italic;
 }
 
 /* General */
