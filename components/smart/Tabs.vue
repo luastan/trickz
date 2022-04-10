@@ -74,7 +74,7 @@ export default {
 <style scoped>
 
 .tab-header {
-  @apply w-full flex items-center justify-start border-b border-gray-100 dark:border-gray-800
+  @apply w-full flex items-center justify-start border-b border-gray-100 dark:border-neutral-800
 }
 
 .tab-header > .tab {
@@ -94,10 +94,17 @@ export default {
 }
 
 .tab-header > .tab.is-selected {
-  @apply text-blue-500
+  @apply text-blue-500 dark:text-rose-500
 }
 
 .tab-header > .tab.is-selected:after {
-  @apply bg-blue-500
+  @apply bg-blue-500 dark:bg-rose-500
+}
+.tab-header > .tab:hover {
+  @apply text-blue-400 dark:text-rose-700
+}
+
+.tab-header > .tab:hover:after {
+  @apply bg-blue-100 dark:bg-rose-800
 }
 </style>

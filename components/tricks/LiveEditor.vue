@@ -65,7 +65,7 @@
         @input="onInput"
         v-html="innerValue"
         contenteditable="true"
-        class="wysiwyg-output mt-4 outline-2 tricks-input-outline line prose dark:prose-invert border-2 p-4 rounded-lg dark:rounded-lg shadow-inner-sm border-gray-100 dark:bg-gray-800 dark:border-gray-700 focus:outline-blue-600"
+        class="wysiwyg-output mt-4 outline-2 tricks-input-outline line prose dark:prose-invert border-2 p-4 rounded-lg dark:rounded-lg shadow-inner-sm border-gray-100 dark:bg-neutral-800 dark:border-neutral-700 focus:outline-blue-600"
       />
     </div>
   </div>
@@ -163,7 +163,7 @@ html.dark .tricks-editor > .controls {
 }
 
 .tricks-editor > .controls > .button-group > .button > .tricks-icon {
-  @apply h-4 fill-gray-600 dark:fill-gray-200
+  @apply h-4 fill-gray-600 dark:fill-neutral-200
 }
 
 #numbered-list-icon {

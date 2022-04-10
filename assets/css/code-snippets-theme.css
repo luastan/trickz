@@ -48,9 +48,10 @@ html:not(.dark) pre[class*="language-"] {
 
 html.dark code[class*="language-"],
 html.dark pre[class*="language-"] {
-  background: #283142;
+
   color: #eceff1;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  @apply bg-neutral-800;
 }
 
 
@@ -506,6 +507,17 @@ html:not(.dark) .prism-previewer-easing.prism-previewer-easing circle {
 }
 
 
+/*
+
+
+
+ Dark Theme
+
+
+
+*/
+
+
 html.dark .token.comment,
 html.dark .token.prolog,
 html.dark .token.cdata {
@@ -680,26 +692,26 @@ html.dark .token.token.space:before {
 
 /* Toolbar plugin overrides */
 /* Space out all buttons and move them away from the right edge of the code block */
-div.code-toolbar > .toolbar.toolbar > .toolbar-item {
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item {
   margin-right: 0.4em;
 }
 
 /* Styling the buttons */
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
   background: hsl(220, 13%, 26%);
   color: hsl(220, 9%, 55%);
   padding: 0.1em 0.4em;
   border-radius: 0.3em;
 }
 
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
+html.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
   background: hsl(220, 13%, 28%);
   color: hsl(220, 14%, 71%);
 }
@@ -767,41 +779,41 @@ html.dark .rainbow-braces .token.token.punctuation.brace-level-12 {
 
 /* Diff Highlight plugin overrides */
 /* Taken from https://github.com/atom/github/blob/master/styles/variables.less */
-pre.diff-highlight > code .token.token.deleted:not(.prefix),
-pre > code.diff-highlight .token.token.deleted:not(.prefix) {
+html.dark pre.diff-highlight > code .token.token.deleted:not(.prefix),
+html.dark pre > code.diff-highlight .token.token.deleted:not(.prefix) {
   background-color: hsla(353, 100%, 66%, 0.15);
 }
 
-pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection,
-pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection {
+html.dark pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection,
+html.dark pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection,
+html.dark pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection,
+html.dark pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection {
   background-color: hsla(353, 95%, 66%, 0.25);
 }
 
-pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection,
-pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection {
+html.dark pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection,
+html.dark pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection,
+html.dark pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection,
+html.dark pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection {
   background-color: hsla(353, 95%, 66%, 0.25);
 }
 
-pre.diff-highlight > code .token.token.inserted:not(.prefix),
-pre > code.diff-highlight .token.token.inserted:not(.prefix) {
+html.dark .diff-highlight > code .token.token.inserted:not(.prefix),
+html.dark pre > code.diff-highlight .token.token.inserted:not(.prefix) {
   background-color: hsla(137, 100%, 55%, 0.15);
 }
 
-pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection,
-pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection {
+html.dark pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection,
+html.dark pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection,
+html.dark pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection,
+html.dark pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection {
   background-color: hsla(135, 73%, 55%, 0.25);
 }
 
-pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection,
-pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
+html.dark pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection,
+html.dark pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection,
+html.dark pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection,
+html.dark pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
   background-color: hsla(135, 73%, 55%, 0.25);
 }
 

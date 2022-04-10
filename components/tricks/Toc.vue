@@ -5,23 +5,23 @@
   >
     <p
       v-if="toc.length"
-      class="mb-3 lg:mb-2 text-gray-500 dark:text-gray-600 uppercase tracking-wider font-bold text-sm lg:text-xs"
+      class="mb-3 lg:mb-2 text-gray-500 dark:text-neutral-600 uppercase tracking-wider font-bold text-sm lg:text-xs"
     >
       Contents
     </p>
     <scrollactive
       v-if="toc.length"
       highlight-first-item
-      active-class="text-primary-500"
+      active-class="is-active"
       :offset="0"
       tag="ul"
     >
       <li
         v-for="link of toc"
-        class="transition-all text-gray-700 dark:text-gray-300"
+        class="transition-all text-gray-700 dark:text-neutral-400"
         :key="link.id"
         :class="{
-              'border-t border-dashed dark:border-gray-800 first:border-t-0': link.depth === 2
+              'border-t border-dashed dark:border-neutral-800 first:border-t-0': link.depth === 2
             }"
       >
         <a
@@ -54,5 +54,7 @@ export default {
 </script>
 
 <style scoped>
-
+.is-active {
+  @apply text-primary-500 dark:text-rose-500
+}
 </style>

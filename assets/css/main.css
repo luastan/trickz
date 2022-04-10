@@ -58,12 +58,12 @@ html {
 
   .nuxt-content h2 a::before {
     content: "#";
-    @apply text-primary-500 font-normal text-xl leading-8 -ml-5 pr-2 absolute opacity-100 transition-opacity
+    @apply text-primary-500 dark:text-rose-500 font-normal text-xl leading-8 -ml-5 pr-2 absolute opacity-100 transition-opacity
   }
 
   .nuxt-content h4 a::before {
     content: "#";
-    @apply text-primary-500 font-normal text-lg leading-6 -ml-5 pr-2 absolute opacity-100 transition-opacity
+    @apply text-primary-500 dark:text-rose-500 font-normal text-lg leading-6 -ml-5 pr-2 absolute opacity-100 transition-opacity
   }
 }
 
@@ -98,15 +98,15 @@ html {
 }
 
 .fancy-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 border-2 border-gray-50 dark:bg-gray-700 transition-colors
+  @apply bg-gray-200 border-2 border-gray-50 dark:bg-neutral-700 transition-colors
 }
 
 .fancy-scrollbar::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-300 dark:bg-gray-600
+  @apply bg-gray-300 dark:bg-neutral-600
 }
 
 .fancy-scrollbar::-webkit-scrollbar-track {
-  @apply bg-gray-50 dark:bg-gray-800
+  @apply bg-gray-50 dark:bg-neutral-800
 }
 
 body {
@@ -120,7 +120,7 @@ body {
 }
 
 .copy-me:hover {
-  @apply bg-gray-200 dark:bg-gray-800
+  @apply bg-gray-200 dark:bg-neutral-800
 }
 
 
@@ -136,5 +136,5 @@ body {
 }
 .tricks-input-outline:focus-within,
 .tricks-input-outline:focus {
-  @apply outline-blue-600 outline rounded
+  @apply outline-blue-600 outline rounded dark:outline-rose-500
 }

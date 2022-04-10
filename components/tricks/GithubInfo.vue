@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full border-t border-gray-200 dark:border-gray-800 pt-4 not-prose">
+  <div class="w-full border-t border-gray-200 dark:border-neutral-800 pt-4 not-prose">
     <!--    <div class="mb-4 text-lg font-semibold">-->
     <!--      Contributors:-->
     <!--    </div>-->
-    <div class="flex items-center justify-between mb-4 text-sm text-gray-400 dark:text-gray-500">
+    <div class="flex items-center justify-between mb-4 text-sm text-gray-400 dark:text-neutral-500">
       <a :href="editLink" target="_blank" class="hover:underline flex items-center justify-start">
         <icons-pencil class="mr-1 h-4 fill-gray-400"/>
         <span>Edit this page on GitHub</span>
@@ -17,7 +17,7 @@
       class="list-none pl-0 flex items-center justify-start flex-wrap"
     >
       <li
-        class="border-gray-200 dark:border-gray-800 dark:bg-gray-700 mr-2 mb-2 rounded overflow-clip not-prose flex items-center justify-start border"
+        class="border-gray-200 dark:border-neutral-800 dark:bg-neutral-700 mr-2 mb-2 rounded overflow-clip not-prose flex items-center justify-start border"
         v-for="contributor in contributors"
       >
         <img

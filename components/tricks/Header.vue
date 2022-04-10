@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="tricks-navbar transition-shadow flex items-center justify-centerst fixed dark:bg-gray-900 light-bg tricks-nav top-0 z-40 w-full border-b dark:border-gray-800 "
+    class="tricks-navbar transition-shadow flex items-center justify-centerst fixed dark:bg-neutral-900 light-bg tricks-nav top-0 z-40 w-full border-b dark:border-neutral-800 "
     :class="{ 'shadow border-transparent': scrolled && allowShadow }"
   >
     <transition name="slide-up" mode="in-out">
@@ -10,7 +10,7 @@
       >
         <div
           @click="scrollToTop"
-          class="scroll-top-pill select-none shadow-lg cursor-pointer bg-gray-900 text-gray-100 dark:bg-gray-800 dark:text-gray-200 pointer-events-auto mt-4 py-1 px-4 rounded-l-full rounded-r-full"
+          class="scroll-top-pill select-none shadow-lg cursor-pointer bg-gray-900 text-gray-100 dark:bg-neutral-800 dark:text-neutral-200 pointer-events-auto mt-4 py-1 px-4 rounded-l-full rounded-r-full"
         >
           Scroll to top
         </div>
@@ -20,8 +20,8 @@
     <div class="container mx-auto flex-1 px-4 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="lg:w-1/5 flex items-center pr-4">
-          <nuxt-link to="/" class="flex-shrink-0 flex items-center justify-start dark:text-gray-200 flex-1 font-bold text-xl">
-            <icons-trickz class="stroke-gray-900 fill-gray-900 dark:fill-gray-200 dark:stroke-gray-200 h-10"/>
+          <nuxt-link to="/" class="flex-shrink-0 flex items-center justify-start dark:text-neutral-200 flex-1 font-bold text-xl">
+            <icons-trickz class="stroke-gray-900 fill-gray-900 dark:fill-neutral-200 dark:stroke-neutral-200 h-10"/>
             <span class="ml-4 hidden lg:block">Trickz</span>
           </nuxt-link>
         </div>
@@ -114,11 +114,11 @@ html:not(.dark) .light-bg {
 }
 
 .social .tricks-icon {
-  @apply h-5 w-5 cursor-pointer stroke-gray-600 transition-colors
+  @apply h-5 w-5 cursor-pointer stroke-gray-600 dark:stroke-neutral-600 transition-colors
 }
 
 .social > *:hover .tricks-icon {
-  @apply stroke-blue-500
+  @apply stroke-blue-500 dark:stroke-rose-500
 }
 
 .social > *:not(:first-child) {

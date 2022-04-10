@@ -13,6 +13,6 @@ export default {
 
 <style scoped>
 .tricks-toast {
-  @apply bg-gray-900 py-2 px-4 dark:bg-gray-600 rounded relative text-gray-300
+  @apply bg-gray-900 py-2 px-4 dark:bg-neutral-600 rounded relative text-gray-300
 }
 </style>

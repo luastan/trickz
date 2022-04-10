@@ -61,7 +61,7 @@ export default {
 
 .card {
   width: 100%;
-  @apply dark:bg-gray-700 cursor-pointer shadow-sm hover:shadow transition-shadow rounded px-4 border border-gray-200 dark:border-gray-800
+  @apply dark:bg-neutral-700 cursor-pointer shadow-sm hover:shadow transition-shadow rounded px-4 border border-gray-200 dark:border-neutral-800
 }
 
 .card.link {

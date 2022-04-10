@@ -12,8 +12,8 @@
       <div
         v-if="inputValue !== defaultValue"
         @click="inputValue = undefined"
-        class="h-full rounded-r backdrop-blur cursor-pointer absolute flex items-center justify-center right-0 px-2">
-        <icons-reset class="h-5 w-5 stroke-gray-600 fill-gray-600 dark:stroke-gray-400 dark:fill-gray-400"/>
+        class="h-full rounded-r backdrop-blur dark:backdrop-blur-2xl cursor-pointer absolute flex items-center justify-center right-0 px-2">
+        <icons-reset class="h-5 w-5 stroke-gray-600 fill-gray-600 dark:stroke-neutral-400 dark:fill-neutral-400"/>
       </div>
     </transition>
   </div>
@@ -96,10 +96,10 @@ export default {
 
 
 .smart-input > .cell {
-  @apply px-4 py-1 border-gray-200 outline-0 dark:border-gray-800 dark:bg-gray-600 appearance-none
+  @apply px-4 py-1 border-gray-200 outline-0 dark:border-neutral-800 dark:bg-neutral-700 appearance-none
 }
 
 .smart-input > .cell.title {
-  @apply bg-gray-100 font-semibold dark:bg-gray-700
+  @apply bg-gray-100 font-semibold dark:bg-neutral-800
 }
 </style>

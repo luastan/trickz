@@ -7,7 +7,7 @@ const {JSDOM} = require('jsdom');
 *
 * Smart Variables Regex:
 * */
-const findTplRegex = /{{ +([a-zA-Z\-]+) ([^}]+) +}}/g;
+const findTplRegex = /{{ +([a-zA-Z\-]+) ([^}]+) +}( [a-zA-Z-0-9,\s]+ )?}/g;
 
 
 exports.beforeParse = file => {
@@ -325,7 +325,7 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
 
   rawCode = rawCode.replaceAll(
     findTplRegex,
-    '<smart-variable variable="$1">$2</smart-variable>',
+    '<smart-variable default-value="$2" variable="$1" value-filters="$3">$2</smart-variable>',
   );
 
 

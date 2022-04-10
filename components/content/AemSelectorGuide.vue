@@ -9,7 +9,7 @@
     >
 
       <g
-        class="element base-url fill-gray-600 dark:fill-gray-300"
+        class="element base-url fill-gray-600 dark:fill-neutral-300"
         @mouseover="hoveredElement = 'base-url'"
       >
         <!--      Base URL -->
@@ -91,7 +91,7 @@
 
     </svg>
     <div
-      class="w-full explaination-card border-y py-4 mt-4"
+      class="w-full explaination-card border-y border-gray-100 dark:border-neutral-800 py-4 mt-4"
     >
       <transition name="fade" mode="out-in">
         <div key="base-url" v-if="hoveredElement === 'base-url'">
@@ -146,7 +146,7 @@ export default {
   }
 
   .aem-selector-guide:hover > .element:not(:hover) {
-    @apply fill-gray-300 dark:fill-gray-700
+    @apply fill-gray-300 dark:fill-neutral-700
   }
 
   .aem-selector-guide > .element {

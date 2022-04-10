@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 .tricks-check.checked > .checkmark {
-  @apply bg-blue-500
+  @apply bg-blue-500 dark:bg-rose-500
 }
 
 .tricks-check > .checkmark {

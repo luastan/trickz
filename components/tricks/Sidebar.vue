@@ -126,12 +126,12 @@ export default {
 
 
 .category-list > .category > .title {
-  @apply text-lg text-gray-500 dark:text-gray-400 font-medium w-full py-2
+  @apply text-lg text-gray-500 dark:text-neutral-400 font-medium w-full py-2
 }
 
 .category-list > .category > .title.nuxt-link-exact-active,
 .category-list > .category > .title:hover {
-  @apply text-blue-500 dark:text-gray-100
+  @apply text-blue-500 dark:text-rose-500
 }
 
 
@@ -140,37 +140,46 @@ export default {
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .title {
-  @apply w-full text-gray-500 dark:text-gray-400 transition-colors py-2 border-y border-l border-transparent pl-4
+  @apply w-full text-gray-500 dark:text-neutral-400 transition-colors py-2 border-y border-l border-transparent pl-4
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .title > .tricks-icon-arrow {
   @apply transition-transform
 }
 
+.category-list > .category > .title.nuxt-link-active,
+.category-list > .category > .sub-category-list > .sub-category > .title.nuxt-link-active {
+  @apply dark:text-neutral-200
+}
 
 .category-list > .category > .sub-category-list > .sub-category > .title.nuxt-link-active > .tricks-icon-arrow {
   @apply rotate-90
 }
 
+
+.category-list > .category > .sub-category-list > .sub-category > .title.nuxt-link-exact-active > .tricks-icon-arrow {
+  @apply dark:stroke-rose-500
+}
+
 .category-list > .category > .sub-category-list > .sub-category > .title.nuxt-link-exact-active {
-  @apply border-gray-200 bg-gray-50 text-blue-500 dark:text-gray-100 dark:bg-gray-800 dark:border-gray-800
+  @apply border-gray-200 bg-gray-50 text-blue-500 dark:text-rose-500 dark:bg-neutral-800 dark:border-neutral-800
 }
 
 
 .category-list > .category > .sub-category-list > .sub-category > .title:hover {
-  @apply text-blue-500 dark:text-gray-200
+  @apply text-blue-500 dark:text-rose-500
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .title:not(.nuxt-link-exact-active):hover > .tricks-icon-arrow {
-  @apply stroke-blue-500 dark:stroke-gray-200 -translate-x-2 rotate-0
+  @apply stroke-blue-500 dark:stroke-rose-500 -translate-x-2 rotate-0
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .sub-sub-category-list {
-  @apply text-gray-500 dark:text-gray-400 w-full pl-4
+  @apply text-gray-500 dark:text-neutral-400 w-full pl-4
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .sub-sub-category-list > .sub-sub-category {
-  @apply pl-4 w-full border-y border-l border-l-gray-200 dark:border-l-gray-800 border-y-transparent cursor-pointer
+  @apply pl-4 w-full border-y border-l border-l-gray-200 dark:border-l-neutral-800 border-y-transparent cursor-pointer
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .sub-sub-category-list > .sub-sub-category > .title {
@@ -178,7 +187,7 @@ export default {
 }
 
 .category-list > .category > .sub-category-list > .sub-category > .sub-sub-category-list > .sub-sub-category.nuxt-link-exact-active {
-  @apply border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800
+  @apply border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-800
 }
 
 
@@ -187,6 +196,6 @@ export default {
 }
 
 .nuxt-link-exact-active {
-  @apply text-blue-500 dark:text-gray-200
+  @apply text-blue-500 dark:text-rose-500
 }
 </style>

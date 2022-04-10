@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center overflow-hidden justify-center bg-gray-900">
+  <div class="flex items-center overflow-hidden justify-center bg-gray-900 dark:bg-neutral-900">
 
     <div class="stack w-full" style="--stacks: 3;">
 <!--      <span class="layer" style="&#45;&#45;index: 0;">TRICKZ</span>-->

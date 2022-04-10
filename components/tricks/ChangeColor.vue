@@ -27,9 +27,9 @@ export default {
 
 <style scoped>
   .tricks-change-color > .tricks-icon {
-    @apply dark:stroke-gray-600 stroke-gray-600
+    @apply dark:stroke-neutral-600 stroke-gray-600
   }
   .tricks-change-color:hover > .tricks-icon {
-    @apply dark:stroke-gray-400 stroke-gray-900
+    @apply dark:stroke-rose-500 stroke-gray-900
   }
 </style>

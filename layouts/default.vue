@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-16 dark:bg-gray-900 min-h-screen flex flex-grow w-full flex-col items-center ">
+  <div class="pt-16 dark:bg-neutral-900 min-h-screen flex flex-grow w-full flex-col items-center ">
     <tricks-header
       :allow-shadow="!showMobileMenu"
       :show-menu="showMobileMenu"
@@ -27,14 +27,14 @@
             @close="showMobileMenu = false"
             :categories="categories"
             v-if="showMobileMenu"
-            class="layout-nav-tricks mobile dark:bg-gray-800 bg-white h-full flex-1 flex-grow w-full z-30 sm:w-7/12 md:w-5/12 fixed lg:hidden shadow-lg backdrop-blur"
+            class="layout-nav-tricks mobile dark:bg-neutral-800 bg-white h-full flex-1 flex-grow w-full z-30 sm:w-7/12 md:w-5/12 fixed lg:hidden shadow-lg backdrop-blur"
           />
         </transition>
 
 
       </div>
     </main>
-    <tricks-footer class="w-full border-t border-gray-200 dark:border-gray-800"/>
+    <tricks-footer class="w-full border-t border-gray-200 dark:border-neutral-800"/>
     <transition mode="out-in" name="fade">
       <div v-if="toast.show" class="fixed pointer-events-none bottom-0 container flex items-center justify-center w-full pb-4">
         <tricks-toast @close="closeToast" class="max-w-2xl pointer-events-auto cursor-pointer">{{ notification }}</tricks-toast>
@@ -102,6 +102,6 @@ html:not(.dark) .mobile {
 }
 
 .layout-nav-tricks {
-  @apply border-r border-gray-200 dark:border-gray-800 dark:bg-gray-900 lg:pt-0 lg:w-1/5  mt-16 lg:mt-0
+  @apply border-r border-gray-200 dark:border-neutral-800 dark:bg-neutral-900 lg:pt-0 lg:w-1/5  mt-16 lg:mt-0
 }
 </style>

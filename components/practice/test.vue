@@ -22,13 +22,13 @@
             'selected': answer.selected
           }"
           @click="handleClickAnswer(question, answer)"
-          class="answer w-full cursor-pointer px-4 py-1 rounded hover:bg-gray-50 hover:dark:bg-gray-800"
+          class="answer w-full cursor-pointer px-4 py-1 rounded hover:bg-neutral-50 hover:dark:bg-neutral-800"
         >
           <span class="mr-2">{{ id }})</span><span>{{ answer.content }}</span>
         </div>
       </div>
     </div>
-    <div class="w-full pt-4 flex items-center justify-end border-t border-gray-200 dark:border-gray-700">
+    <div class="w-full pt-4 flex items-center justify-end border-t border-gray-200 dark:border-neutral-700">
       <lst-button size="sm">Submit</lst-button>
     </div>
   </div>
@@ -82,6 +82,6 @@ export default {
   @apply outline-2 outline  outline-transparent mt-2
 }
 .answer.selected {
-  @apply outline-blue-600 dark:bg-gray-700
+  @apply outline-blue-600 dark:bg-neutral-700
 }
 </style>

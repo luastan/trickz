@@ -7,7 +7,7 @@
       w-full
       px-2
       border border-gray-300 rounded
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      focus:text-neutral-700 focus:bg-white focus:border-blue-600 focus:outline-none
     "
       ></textarea>
 
