@@ -30,6 +30,6 @@ export default {
     @apply dark:stroke-neutral-600 stroke-gray-600
   }
   .tricks-change-color:hover > .tricks-icon {
-    @apply dark:stroke-rose-500 stroke-gray-900
+    @apply dark:stroke-rose-500 stroke-primary-500
   }
 </style>
