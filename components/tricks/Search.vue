@@ -10,13 +10,13 @@
         <label for="search" class="sr-only">Search</label>
         <div class="relative">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <icons-search class="h-5 w-5 text-gray-500"/>
+            <icons-search class="h-5 w-5 text-gray-500 dark:text-neutral-500"/>
           </div>
           <input
             id="search"
             ref="search"
             v-model="q"
-            class="block w-full pl-10 pr-3 py-2 truncate leading-5 placeholder-gray-500 border border-transparent text-gray-700 dark:text-white dark-focus:text-white focus:border-neutral-300 dark:focus:border-neutral-700 rounded-md focus:outline-none focus:bg-white dark:focus:bg-neutral-900 bg-gray-200 dark:bg-neutral-800"
+            class="block w-full pl-10 pr-3 py-2 truncate leading-5 placeholder-gray-500 dark:placeholder-neutral-400 border border-transparent text-gray-700 dark:text-neutral-200 dark-focus:text-neutral-100 focus:border-neutral-300 dark:focus:border-neutral-700 rounded-md focus:outline-none focus:bg-white dark:focus:bg-neutral-900 bg-gray-200 dark:bg-neutral-800"
             :class="{ 'rounded-b-none': focus && (searching || results.length) }"
             placeholder="Search (Ctrl + E)"
             type="search"
@@ -47,9 +47,10 @@
           }"
             @click="focus = false"
           >
-            <span v-if="result.category" class="font-semibold">{{ result.category.title }}</span>
-
-            <icons-arrow v-if="result.category" class="w-3 h-3 mx-1"/>
+            <span v-if="result.category" class="font-semibold hidden md:inline">{{ result.category.title }}</span>
+            <icons-arrow v-if="result.category" class="w-3 h-3 mx-1 md:inline hidden"/>
+            <span v-if="result.subcategory" class="font-semibold">{{ result.subcategory.title }}</span>
+            <icons-arrow v-if="result.subcategory" class="w-3 h-3 mx-1"/>
             {{ result.title }}
           </NuxtLink>
         </li>
@@ -141,51 +142,26 @@ export default {
     resultsWithCategory() {
       return this.results.map(r => {
         let pathParts = r.path.split('/');
+        while (pathParts.length > 3) {
+          pathParts.pop()
+        }
+
+        let subcategory = null;
+        let subcategoryPath = null;
+        if (r.path.split('/').length === 4) {
+          subcategoryPath = pathParts.join('/');
+        }
         while (pathParts.length > 2) {
           pathParts.pop()
         }
-        // console.log(pathParts)
-        return {...r, category: this.categories[pathParts.join('/')]}
+
+        const category = this.categories[pathParts.join('/')];
+        if (!!subcategoryPath) {
+          subcategory = category.children[subcategoryPath];
+        }
+
+        return {...r, category, subcategory}
       })
-    },
-    resultsByCategory() {
-      // Level 1
-      const  cats = {};
-      for (const res of this.results) {
-        let pathParts = res.path.split('/');
-        while (pathParts.length > 2) {
-          pathParts.pop()
-        }
-        // console.log(pathParts)
-        const cat = this.categories[pathParts.join('/')];
-        if (cat !== undefined) {
-          if (cats[cat.path] === undefined) {
-            cats[cat.path] = {
-              ...cat,
-              childrenResults: []
-            };
-          }
-
-          const enhancedResult = {...res};
-          pathParts = res.path.split('/');
-          // console.log(res.path);
-          if (pathParts.length > 2) {
-            if (pathParts.length > 3) {
-              while (pathParts.length > 2) {
-                pathParts.pop();
-              }
-              // Meterle path padre
-              enhancedResult.parentCat = cats[pathParts.join('/')]
-            }
-            cats[cat.path].childrenResults.push(enhancedResult);
-          }
-
-
-
-        }
-      }
-
-      return Object.values(cats);
     },
   }
 }
