@@ -65,10 +65,10 @@
       <li class="social flex lg:hidden items-center justify-start block w-full">
 
         <a class="mr-4" target="_blank" href="https://twitter.com/luastan">
-          <icons-twitter class="h-6 w-6 cursor-pointer stroke-2 stroke-gray-500"/>
+          <icons-twitter class="h-6 w-6 cursor-pointer stroke-2 dark:stroke-neutral-600 stroke-gray-500"/>
         </a>
         <a class="" target="_blank" href="https://github.com/luastan">
-          <icons-github class="h-6 w-6 mr-4 cursor-pointer stroke-2 stroke-gray-500"/>
+          <icons-github class="h-6 w-6 mr-4 cursor-pointer stroke-2 dark:stroke-neutral-600 stroke-gray-500"/>
         </a>
         <tricks-change-color class="h-7 w-7 stroke-gray-500"/>
       </li>
