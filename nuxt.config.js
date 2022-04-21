@@ -108,7 +108,7 @@ export default {
   },
 
   serverMiddleware: [
-    '~/server-middleware/redirect-example.js',
+    '~/server-middleware/content-images.js',
   ],
 
   hooks: {
