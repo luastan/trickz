@@ -120,7 +120,8 @@ html:not(.dark) .token.attr-name,
 html:not(.dark) .token.boolean,
 html:not(.dark) .token.atrule {
   /*color: hsl(35, 99%, 36%);*/
-  color: hsl(200, 18%, 26%);
+  /*color: hsl(200, 18%, 26%);*/
+  color: hsl(28, 99%, 45%);
 }
 
 html:not(.dark) .token.constant {
