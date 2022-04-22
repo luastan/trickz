@@ -8,7 +8,7 @@
       @click.prevent="handleCopy"
 
     >
-      <icons-copy-check v-if="copied"/>
+      <icons-copy-check class="fill-gray-600 dark:fill-neutral-400" v-if="copied"/>
       <icons-copy class="fill-gray-600 dark:fill-neutral-400" v-else/>
     </div>
   </div>
