@@ -13,7 +13,7 @@
       v-if="toc.length"
       highlight-first-item
       active-class="is-active"
-      :offset="0"
+      :offset="65"
       tag="ul"
     >
       <li
