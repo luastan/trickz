@@ -8,7 +8,7 @@
       @click.prevent="handleCopy"
 
     >
-      <icons-copy-check class="fill-gray-600 dark:fill-neutral-400" v-if="copied"/>
+      <icons-copy-check v-if="copied"/>
       <icons-copy class="fill-gray-600 dark:fill-neutral-400" v-else/>
     </div>
   </div>
@@ -56,6 +56,6 @@ export default {
 }
 
 .tricks-copy-code > .tricks-icon {
-  @apply stroke-gray-600 h-5 w-5
+  @apply stroke-gray-600 h-5 w-5 dark:stroke-neutral-400
 }
 </style>
