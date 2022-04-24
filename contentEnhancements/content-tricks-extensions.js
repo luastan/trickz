@@ -7,8 +7,7 @@ const {JSDOM} = require('jsdom');
 *
 * Smart Variables Regex:
 * */
-const findTplRegex = /{{ +([a-zA-Z\-]+) ([^}]+) +}( [a-zA-Z-0-9,\s]+ )?}/g;
-
+const findTplRegex = /{{ +([a-zA-Z\-]+) (.+?) +}( +[a-zA-Z-\d,\s]+ +)?}/g;
 
 exports.beforeParse = file => {
   if (file.extension !== '.md') {
@@ -310,22 +309,23 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
   let codeElement = document.createElement('code');
   preElement.appendChild(codeElement);
 
+  const regexResults = rawCode.matchAll(findTplRegex);
 
   const guessedLang = (lang || grammer || 'text').toLowerCase();
-  // rawCode =
-  //   guessedLang === 'html' ||
-  //   guessedLang === 'markdown' ||
-  //   guessedLang === 'markup' ||
-  //   guessedLang === 'svg' ||
-  //   guessedLang === 'xml'
-  //     ? escapeHtml(rawCode) : rawCode;
-  rawCode = escapeHtml(rawCode);
-
-  const regexResults = rawCode.matchAll(findTplRegex);
+  rawCode =
+    guessedLang === 'html' ||
+    guessedLang === 'markdown' ||
+    guessedLang === 'markup' ||
+    guessedLang === 'svg' ||
+    guessedLang === 'xml'
+      ? escapeHtml(rawCode) : rawCode;
 
   rawCode = rawCode.replaceAll(
     findTplRegex,
-    '<smart-variable default-value="$2" variable="$1" value-filters="$3">$2</smart-variable>',
+    (match, p1, p2, p3) => {
+      p2 = escapeHtml(p2);
+      return `<smart-variable default-value="${p2}" variable="${p1}" value-filters="${p3}">${p2}</smart-variable>`
+    },
   );
 
 
