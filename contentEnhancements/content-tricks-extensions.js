@@ -7,7 +7,7 @@ const {JSDOM} = require('jsdom');
 *
 * Smart Variables Regex:
 * */
-const findTplRegex = /{{ +([a-zA-Z_\-]+) (.+?) +}( +[a-zA-Z-\d,\s]+ +)?}/g;
+const findTplRegex = /{{ *([a-zA-Z_\-]+) (.+?) *}( *[a-zA-Z-\d,\s]+ *)?}/g;
 
 exports.beforeParse = file => {
   if (file.extension !== '.md') {
