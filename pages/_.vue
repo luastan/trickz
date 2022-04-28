@@ -28,16 +28,9 @@ export default {
     if (!document) {
       return error({statusCode: 404, message: 'Page not found'})
     }
-    const [prev, next] = await $content('/', {deep: true})
-      .only(['title', 'path', 'to'])
-      .sortBy('position', 'asc')
-      .surround(document.path, {before: 1, after: 1})
-      .fetch();
 
     return {
       doc: document,
-      prev,
-      next
     }
   },
 
