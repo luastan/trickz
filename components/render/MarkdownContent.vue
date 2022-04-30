@@ -3,7 +3,7 @@
     :title="contentDoc.title"
     :description="contentDoc.description"
     :badge="contentDoc.badge"
-    :edit-link="editLink"
+    :edit-link="contentDoc.editURL"
   >
     <template>
       <NuxtContent
@@ -12,10 +12,10 @@
         :document="contentDoc"/>
       <tricks-github-info
         class="mt-6"
-        v-if="contentDoc.contributors"
+        v-if="contentDoc.editURL"
         :last-update="new Date(Date.parse(contentDoc.lastCommittedDate || contentDoc.updatedAt))"
         :contributors="contentDoc.contributors"
-        :edit-link="editLink"
+        :edit-link="contentDoc.editURL"
       />
     </template>
     <template v-slot:sidebar>
@@ -68,14 +68,6 @@ export default {
       checkElement.parentElement.parentElement.classList.add('tricks-checklist');
     }
   },
-  computed: {
-    documentPath() {
-      return `/${this.$route.params.pathMatch || 'tricks'}`
-    },
-    editLink() {
-      return `https://github.com/luastan/tricks-content/edit/master${this.documentPath}${this.contentDoc.extension}`;
-    },
-  }
 }
 </script>
 

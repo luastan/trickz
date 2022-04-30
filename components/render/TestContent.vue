@@ -3,7 +3,7 @@
     :title="contentDoc.title"
     :description="contentDoc.description"
     :badge="contentDoc.badge"
-    :edit-link="`https://github.com/luastan/tricks-content/edit/master${contentDoc.path}${contentDoc.extension}`"
+    :edit-link="contentDoc.editURL"
   >
     <template>
       <transition name="fade" mode="out-in">

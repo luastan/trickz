@@ -25,7 +25,7 @@
           target="_blank"
           class="mt-3 block flex items-center justify-start f relative lg:mb-2 text-gray-500 dark:text-neutral-600 uppercase tracking-wider font-bold text-sm lg:text-xs"
           v-if="editLink !== null">
-          Edit on Github
+          Edit on {{ $tricks.config.repoType }}
           <icons-pencil class="ml-2 h-4 w-4 fill-gray-600 dark:fill-neutral-600"/>
         </a>
       </div>

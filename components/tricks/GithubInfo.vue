@@ -6,9 +6,9 @@
     <div class="flex items-center justify-between mb-4 text-sm text-gray-400 dark:text-neutral-500">
       <a :href="editLink" target="_blank" class="hover:underline flex items-center justify-start">
         <icons-pencil class="mr-1 h-4 fill-gray-400 dark:fill-neutral-500"/>
-        <span>Edit this page on GitHub</span>
+        <span>Edit this page on {{ $tricks.config.repoType }}</span>
       </a>
-      <div>
+      <div v-if="lastUpdate">
         Updated at {{ lastUpdate | enShortTextDate }}
       </div>
 
@@ -52,7 +52,7 @@ export default {
     },
     lastUpdate: {
       type: Date,
-      required: true,
+      required: false,
     },
     editLink: {
       type: String,

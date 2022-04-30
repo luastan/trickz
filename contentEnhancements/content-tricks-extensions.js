@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import tricksConfig from '../tricks.config.js';
 
 const createDOMPurify = require('dompurify');
 const {JSDOM} = require('jsdom');
@@ -9,9 +10,60 @@ const {JSDOM} = require('jsdom');
 * */
 const findTplRegex = /{{ *([a-zA-Z_\-]+) (.+?) *}( *[a-zA-Z-\d,\s]+ *)?}/g;
 
+const codeBlockRegex = /```([\s\S]*?)```/g;
+const inlineCodeRegex = /([^`])`([^`][^\n\r]*?)`([^`])/g;
+
 exports.beforeParse = file => {
   if (file.extension !== '.md') {
     return
+  }
+
+  // Apply DOMPurify to text
+  if (tricksConfig.sanitize) {
+    const dom = new JSDOM(document.content);
+    const window = dom.window;
+    const DOMPurify = createDOMPurify(window);
+
+    let fileData = file.data;
+    fileData = fileData.replaceAll(codeBlockRegex, function (match, p1, offset, string) {
+      const buff = Buffer.from(p1);
+      return `\`\`\`${buff.toString('base64')}\`\`\``;
+    });
+
+    fileData = fileData.replaceAll(inlineCodeRegex, function (match, p1, p2, p3, offset, string) {
+      const buff = Buffer.from(p2);
+      return `${p1}\`${buff.toString('base64')}\`${p3}`;
+    });
+
+    fileData = DOMPurify.sanitize(fileData, {
+      ADD_TAGS: ['iframe', 'video', 'audio', 'source', 'track'],
+      ADD_ATTR: ['allowfullscreen', 'controls', 'src', 'type', 'width', 'height', 'poster', 'preload', 'autoplay', 'loop', 'muted', 'default', 'srcset'],
+      USE_PROFILES: {
+        html: true,
+        svg: true,
+        svgFilters: true,
+      },
+      CUSTOM_ELEMENT_HANDLING: {
+        tagNameCheck: /^(tricks|smart|content)-/,
+        attributeNameCheck: /.*/,
+        allowCustomizedBuiltInElements: false,
+      },
+    });
+
+    // DOMPurify encodes the markdown "note blocks"
+    fileData = fileData.replace(/^&gt; /gm, '> ');
+
+    fileData = fileData.replaceAll(codeBlockRegex, function (match, p1, offset, string) {
+      const buff = Buffer.from(p1, 'base64');
+      return `\`\`\`${buff.toString('utf-8')}\`\`\``;
+    });
+
+    fileData = fileData.replaceAll(inlineCodeRegex, function (match, p1, p2, p3, offset, string) {
+      const buff = Buffer.from(p2, 'base64');
+      return `${p1}\`${buff.toString('utf-8')}\`${p3}`;
+    });
+
+    file.data = fileData;
   }
 
   // file.data = file.data.replace(/[^`]`([^`]+)`[^`]/g, '<tricks-copy-inline>$1</tricks-copy-inline>');
@@ -67,9 +119,28 @@ function buildDateQuery(filePath) {
 }
 
 exports.beforeInsert = ghToken => (async (document, database) => {
+  // Repo URL for edition
+  const repoType = tricksConfig.repoType.toLowerCase();
+  if (tricksConfig.repoURL) {
+    if (repoType === 'github') {
+      document.editURL = `${tricksConfig.repoURL}/edit/${tricksConfig.repoBranch}${document.path}${document.extension}`;
+    } else if (repoType === 'gitlab') {
+      document.editURL = `${tricksConfig.repoURL}/-/edit/${tricksConfig.repoBranch}${document.path}${document.extension}`;
+    }
+  }
 
+  // Readme as top level
+  if (tricksConfig.readmeAsTopLevel) {
+    const readmeRegex = /(.+)\/README$/g;
+    document.path = document.path.replaceAll(readmeRegex, '$1');
+  }
 
   // Fetching the contributor list
+
+  if (repoType !== 'github') {
+    document.contributors = [];
+    return;
+  }
 
   if (ghToken === undefined || ghToken === null || ghToken.length <= 0 || ghToken === "$GH_TOKEN") {
     return
@@ -112,14 +183,16 @@ exports.beforeInsert = ghToken => (async (document, database) => {
   });
 
   if (res.status === 200) {
-    document.lastCommittedDate = (await res.json())
+    const edges = (await res.json())
       .data
       .repository
       .object
       .history
-      .edges[0]
-      .node
-      .committedDate;
+      .edges;
+
+    if (edges.length > 0) {
+      document.lastCommitDate = edges[0].node.committedDate;
+    }
   }
 })
 

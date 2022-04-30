@@ -1,0 +1,18 @@
+export default (context, inject) => {
+  let baseConfig = {
+    defaultPage: '<%= options.defaultPage %>',
+    repoURL: false,
+    repoType: '<%= options.repoType %>',
+    pageTitle: '<%= options.pageTitle %>',
+    readmeAsTopLevel: '<%= options.readmeAsTopLevel %>',
+    footerWatermark: '<%= options.footerWatermark %>',
+  }
+
+<% if (options.repoURL) { %>
+    baseConfig.repoURL = '<%= options.repoURL %>';
+<% } %>
+
+  inject('tricks', {
+    config: baseConfig,
+  });
+};

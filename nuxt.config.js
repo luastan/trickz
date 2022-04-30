@@ -1,4 +1,5 @@
-import {beforeInsert, beforeParse, highlighter} from './contentEnhancements/content-tricks-extensions'
+import {beforeInsert, beforeParse, highlighter} from './contentEnhancements/content-tricks-extensions';
+import tricksConfig from './tricks.config.js';
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -82,7 +83,12 @@ export default {
     '@nuxt/content',
 
 
+    '~/modules/tricks',
   ],
+
+  tricks: {
+    ...tricksConfig
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
