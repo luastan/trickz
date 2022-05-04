@@ -36,7 +36,7 @@ exports.beforeParse = file => {
     });
 
     fileData = DOMPurify.sanitize(fileData, {
-      ADD_TAGS: ['iframe', 'video', 'audio', 'source', 'track'],
+      ADD_TAGS: ['iframe', 'video', 'audio', 'source', 'track', 'template'],
       ADD_ATTR: ['allowfullscreen', 'controls', 'src', 'type', 'width', 'height', 'poster', 'preload', 'autoplay', 'loop', 'muted', 'default', 'srcset'],
       USE_PROFILES: {
         html: true,
