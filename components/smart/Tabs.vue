@@ -3,7 +3,7 @@
     <div class="tab-header">
       <div
         :key="name"
-        v-for="(text, name) in tabs"
+        v-for="(text, name) in computedTabs"
         class="tab"
         :class="{
           'is-selected': name === selected,
@@ -16,7 +16,7 @@
     <client-only>
       <transition name="fade" mode="out-in">
         <div
-          v-for="(name, index) in Object.keys(tabs)"
+          v-for="(name, index) in Object.keys(computedTabs)"
           v-if="name === selected"
           :key="name"
         >
@@ -34,7 +34,6 @@ export default {
   name: "Tabs",
   props: {
     tabs: {
-      type: Object,
       required: true,
     },
     defaultValue: {
@@ -48,13 +47,21 @@ export default {
     SmartComponents,
   ],
   computed: {
+    computedTabs: {
+      get() {
+        if (typeof this.tabs === "string") {
+          return JSON.parse(this.tabs);
+        }
+        return this.tabs;
+      },
+    },
     // Default tab name
     defaultTab: {
       get() {
         if (this.defaultValue) {
           return this.defaultValue;
         }
-        return Object.keys(this.tabs)[0];
+        return Object.keys(this.computedTabs)[0];
       },
     },
 
