@@ -1,6 +1,6 @@
 # Tricks
 
-![Trickz glitch logo](assets/images/trickz_glitch.gif)
+![Trickz logo](assets/images/tricks_logo.png)
 
 
 ## Build Setup
