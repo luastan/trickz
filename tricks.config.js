@@ -1,5 +1,5 @@
 export default {
-  defaultPage: 'tricks.md',
+  defaultPage: 'tricks',
   repoURL: 'https://github.com/luastan/tricks-content',
   repoBranch: 'master',
   repoType: 'Github',

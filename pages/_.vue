@@ -22,8 +22,8 @@ export default {
     },
   },
 
-  async asyncData({$content, store, app, params, error, redirect}) {
-    let path = `/${params.pathMatch || 'tricks'}`;
+  async asyncData({$content, $tricks, store, app, params, error, redirect}) {
+    let path = `/${params.pathMatch || $tricks.config.defaultPage || 'tricks'}`;
     const [document] = await $content({deep: true}).where({path}).fetch()
     if (!document) {
       return error({statusCode: 404, message: 'Page not found'})

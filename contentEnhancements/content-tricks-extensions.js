@@ -131,8 +131,12 @@ exports.beforeInsert = ghToken => (async (document, database) => {
 
   // Readme as top level
   if (tricksConfig.readmeAsTopLevel) {
-    const readmeRegex = /(.+)\/README$/g;
-    document.path = document.path.replaceAll(readmeRegex, '$1');
+    if (document.path === '/README') {
+      document.path = `/${tricksConfig.defaultPage}`;
+    } else {
+      const readmeRegex = /(.+)\/README$/g;
+      document.path = document.path.replaceAll(readmeRegex, '$1');
+    }
   }
 
   // Fetching the contributor list
