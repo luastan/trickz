@@ -1,3 +1,8 @@
 .nuxt
 node_modules
 .idea
+.git
+.gitmodules
+.gitignore
+.components.gen.js
+.editorconfig
