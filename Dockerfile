@@ -1,7 +1,5 @@
 FROM node:lts
 
-USER node
-
 WORKDIR /app
 
 COPY . .
