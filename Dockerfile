@@ -15,6 +15,8 @@ RUN /usr/local/bin/yarn build
 ENV PORT 8080
 ENV HOST 0.0.0.0
 
+USER node
+
 ENTRYPOINT ["/usr/local/bin/yarn", "start"]
 
 
