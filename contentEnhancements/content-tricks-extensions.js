@@ -170,6 +170,8 @@ exports.beforeInsert = ghToken => (async (document, database) => {
       .nodes
       .map(n => n.author)
       .filter((value, index, self) => self.findIndex(author => author.user.login === value.user.login) === index);
+  } else {
+    document.contributors = [];
   }
 
 

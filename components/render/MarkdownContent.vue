@@ -14,7 +14,7 @@
         class="mt-6"
         v-if="contentDoc.editURL"
         :last-update="new Date(Date.parse(contentDoc.lastCommittedDate || contentDoc.updatedAt))"
-        :contributors="contentDoc.contributors"
+        :contributors="contentDoc.contributors || []"
         :edit-link="contentDoc.editURL"
       />
     </template>

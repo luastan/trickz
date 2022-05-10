@@ -48,7 +48,8 @@ export default {
   props: {
     contributors: {
       type: Array,
-      required: true,
+      required: false,
+      default: [],
     },
     lastUpdate: {
       type: Date,
