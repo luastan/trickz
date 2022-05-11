@@ -51,7 +51,7 @@ exports.beforeParse = file => {
     });
 
     // DOMPurify encodes the markdown "note blocks"
-    fileData = fileData.replace(/^&gt; /gm, '> ');
+    fileData = fileData.replace(/^&gt;/gm, '>');
 
     fileData = fileData.replaceAll(codeBlockRegex, function (match, p1, offset, string) {
       const buff = Buffer.from(p1, 'base64');
