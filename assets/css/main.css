@@ -19,6 +19,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Color when right-click > copy link to highlighted text */
+
+html:not(.dark) *::target-text {
+  background-color: rgba(228, 107, 1, 0.2);
+}
+
+html.dark *::target-text {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 
 .nuxt-content {
   @apply break-words;
