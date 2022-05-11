@@ -6,5 +6,5 @@ export default {
   pageTitle: 'Trickz',
   footerWatermark: 'By @luastan',
   readmeAsTopLevel: true,
-  sanitize: false,
+  sanitize: true,
 };

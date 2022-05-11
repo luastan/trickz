@@ -12,6 +12,7 @@ const findTplRegex = /{{ *([a-zA-Z_\-]+) (.+?) *}( *[a-zA-Z-\d,\s]+ *)?}/g;
 
 const codeBlockRegex = /```([\s\S]*?)```/g;
 const inlineCodeRegex = /([^`])`([^`][^\n\r]*?)`([^`])/g;
+const slotRegex = /(v-slot:[a-zA-Z-]+)/g;
 
 exports.beforeParse = file => {
   if (file.extension !== '.md') {
@@ -35,9 +36,14 @@ exports.beforeParse = file => {
       return `${p1}\`${buff.toString('base64')}\`${p3}`;
     });
 
+    let allowedAttrs =  ['allowfullscreen', 'controls', 'src', 'type', 'width', 'height', 'poster', 'preload', 'autoplay', 'loop', 'muted', 'default', 'srcset']
+    for (let regExpMatchArray of fileData.matchAll(slotRegex)) {
+      allowedAttrs.push(regExpMatchArray[0]);
+    }
+
     fileData = DOMPurify.sanitize(fileData, {
-      ADD_TAGS: ['iframe', 'video', 'audio', 'source', 'track', 'template'],
-      ADD_ATTR: ['allowfullscreen', 'controls', 'src', 'type', 'width', 'height', 'poster', 'preload', 'autoplay', 'loop', 'muted', 'default', 'srcset'],
+      ADD_TAGS: ['iframe', 'video', 'audio', 'source', 'track', 'template', 'svg'],
+      ADD_ATTR: allowedAttrs,
       USE_PROFILES: {
         html: true,
         svg: true,
