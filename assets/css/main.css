@@ -30,20 +30,6 @@ html {
 }
 
 
-/*.nuxt-content h1::before,*/
-/*.nuxt-content h2::before,*/
-/*.nuxt-content h3::before,*/
-/*.nuxt-content h4::before {*/
-/*  !* Fix anchor scrollTo *!*/
-/*  display: block;*/
-/*  content: " ";*/
-/*  margin-top: -85px;*/
-/*  height: 85px;*/
-/*  visibility: hidden;*/
-/*  pointer-events: none;*/
-
-/*}*/
-
 .nuxt-content h1,
 .nuxt-content h2,
 .nuxt-content h3,
