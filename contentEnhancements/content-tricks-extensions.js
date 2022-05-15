@@ -397,8 +397,11 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
   const regexResults = rawCode.matchAll(findTplRegex);
 
   const guessedLang = (lang || grammer || 'text').toLowerCase();
+
+  // Languages using tags like <tag> or similar must be escaped or Prism.js will remove them
   rawCode =
     guessedLang === 'html' ||
+    guessedLang === 'php' ||
     guessedLang === 'markdown' ||
     guessedLang === 'markup' ||
     guessedLang === 'svg' ||
