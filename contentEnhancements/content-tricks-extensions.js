@@ -404,6 +404,7 @@ const prismHighlighter = (rawCode, language, {lineHighlights, fileName}, {h, nod
     guessedLang === 'php' ||
     guessedLang === 'markdown' ||
     guessedLang === 'markup' ||
+    guessedLang === 'http' ||
     guessedLang === 'svg' ||
     guessedLang === 'xml'
       ? escapeHtml(rawCode) : rawCode;
