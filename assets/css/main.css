@@ -47,6 +47,10 @@ html.dark *::target-text {
   @apply cursor-pointer
 }
 
+.nuxt-content img {
+  @apply border border-neutral-200 dark:border-neutral-800
+}
+
 @screen sm {
 
   .nuxt-content h1 > a:first-child::before,
